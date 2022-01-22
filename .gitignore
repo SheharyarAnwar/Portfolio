@@ -18,6 +18,8 @@
 # misc
 .DS_Store
 *.pem
+stylelint.config.js
+.vscode
 
 # debug
 npm-debug.log*

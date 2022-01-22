@@ -13,9 +13,9 @@ const Home: NextPage = () => {
       <Container>
         <div className="h-screen flex items-center">
           <section className="inline-block">
-            <h1>Hi</h1>
-            <h1>I'm Sherry,</h1>
-            <h1>web developer</h1>
+            <ElasticAnimatableText level={1} text={"Hi"} />
+            <ElasticAnimatableText level={1} text={"I'm Sherry,"} />
+            <ElasticAnimatableText level={1} text={"web developer"} />
             <div className="mt-8">
               <p className="tracking-widest">
                 Full Stack Developer / React Expert
@@ -23,13 +23,6 @@ const Home: NextPage = () => {
               <Button>Contact Me</Button>
             </div>
           </section>
-        </div>
-        <div>
-          <ElasticAnimatableText level={1} text={"Hello0000000"} />
-          <div className="py-20"></div>
-          <div className="py-20"></div>
-          <div className="py-20"></div>
-          <div className="py-20"></div>
         </div>
       </Container>
     </>

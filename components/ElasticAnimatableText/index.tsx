@@ -30,7 +30,6 @@ const Index: React.FC<Props> = ({ text, level }) => {
         });
         holdKeyFrame = 0;
       } else {
-        console.log("hold", holdKeyframesSnapshot);
         if (i >= holdKeyframesSnapshot) {
           arr.push({
             transform: matrix,
@@ -41,11 +40,10 @@ const Index: React.FC<Props> = ({ text, level }) => {
     return arr;
   };
 
-  console.log("animationKeyfreames", animationKeyframes(8, 1.5, 0.5, 2));
   const handleMouseEnter = (event: MouseEvent) => {
     const element = event.target;
     //@ts-ignore
-    element.animate(animationKeyframes(8, 1.3, 0.8, 2), {
+    element.animate(animationKeyframes(8, 1.2, 0.6, 2), {
       duration: 800,
     });
   };
@@ -58,10 +56,14 @@ const Index: React.FC<Props> = ({ text, level }) => {
   };
   const destructureString = (string: string) => {
     return string.split("").map((val) => {
+      console.log("val", val);
+      if (val === " ") {
+        val = "\u00A0";
+      }
       return createHeading(val);
     });
   };
 
-  return <>{destructureString(text)}</>;
+  return <div>{destructureString(text)}</div>;
 };
 export default Index;

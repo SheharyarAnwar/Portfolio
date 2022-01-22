@@ -13,12 +13,12 @@ const Index: React.FC<Props> = () => {
     }
   );
   return (
-    <header className="col-span-2 col-start-1 bg-navy h-screen sticky top-0">
+    <header className="col-span-12 lg:col-span-2 col-start-1 bg-navy h-screen sticky top-0 bg-red-200">
       <div className="flex flex-row m-auto justify-between w-4/5 md:flex-col md:w-auto">
         <div className="mt-10 flex-center ">
-          <Logo width={90} />
+          <Logo width={70} />
         </div>
-        <nav className="flex-center flex-row md:flex-col mt-10">
+        <nav className="flex-center flex-row md:flex-col mt-12">
           {navigationItems}
         </nav>
       </div>
