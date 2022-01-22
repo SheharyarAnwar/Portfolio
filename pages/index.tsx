@@ -25,7 +25,11 @@ const Home: NextPage = () => {
           </section>
         </div>
         <div>
-          <ElasticAnimatableText level={1} text={"hi"} />
+          <ElasticAnimatableText level={1} text={"Hello0000000"} />
+          <div className="py-20"></div>
+          <div className="py-20"></div>
+          <div className="py-20"></div>
+          <div className="py-20"></div>
         </div>
       </Container>
     </>
