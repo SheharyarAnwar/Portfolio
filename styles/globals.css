@@ -3,9 +3,24 @@
 @layer base {
   @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800&display=swap");
   @import url("https://fonts.googleapis.com/css2?family=Cabin&display=swap");
+  body {
+    color: theme("colors.white");
+  }
 }
 @layer utilities {
   .flex-center {
     @apply flex justify-center items-center;
+  }
+  .band:hover {
+    /* animation: dd 0.5s; */
+    color: theme("colors.green");
+  }
+}
+@keyframes dd {
+  25% {
+    transform: scaleY(0.7);
+  }
+  100% {
+    transform: scaleY(1);
   }
 }
