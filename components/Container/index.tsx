@@ -13,12 +13,10 @@ interface Props {
 const Index: React.FC<Props> = ({ children, className }) => {
   return (
     <>
-      <div className="grid grid-cols-12">
+      <div className="flex">
         {/* Space for sticky positioned header */}
         <Header />
-        <div className={`col-span-10 col-start-3 bg-navy ${className}`}>
-          {children}
-        </div>
+        <div className={`pl-6 md:pl-52 bg-navy ${className}`}>{children}</div>
       </div>
     </>
   );

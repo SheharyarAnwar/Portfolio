@@ -1,36 +1,75 @@
-import React from "react";
-import { Logo } from "../../public/assets/icons";
+import React, { useState } from "react";
+import { useBreakpoints } from "../../hooks";
+import { CloseIcon, Hamburger, Logo } from "../../public/assets/icons";
 
 export interface Props {}
 const Index: React.FC<Props> = () => {
+  const { queryBreakpoints } = useBreakpoints();
   const navigationItems = ["About", "Skills", "Work", "Blog", "Contact"].map(
     (val, i) => {
       return (
-        <div key={i} className="py-3 w-full hover:text-green cursor-pointer ">
-          <p className="text-center font-semibold">{val}</p>
+        <div
+          key={i}
+          className="py-3 w-full cursor-pointer border-b-2 border-solid border-grey-light "
+        >
+          <p className="text-center hover:text-green  font-medium text-grey">
+            {val}
+          </p>
         </div>
       );
     }
   );
+  console.log(queryBreakpoints("lg"));
+
   return (
-    <header className="col-span-12 lg:col-span-2 col-start-1 bg-navy h-screen sticky top-0 bg-red-200">
-      <div className="flex flex-row m-auto justify-between w-4/5 md:flex-col md:w-auto">
-        <div className="mt-10 flex-center ">
-          <Logo width={70} />
-        </div>
-        <nav className="flex-center flex-row md:flex-col mt-12">
-          {navigationItems}
-        </nav>
-      </div>
-    </header>
-    // <div className="h-[100vh] bg-navy w-48 fixed">
-    //   <div className="flex flex-col">
-    //     <div className="mt-10 flex-center ">
-    //       <Logo width={90} />
-    //     </div>
-    //     <nav className="flex-center flex-col mt-10">{navigationItems}</nav>
-    //   </div>
-    // </div>
+    <>
+      {queryBreakpoints("md") ? (
+        <MobileHeader navigationItems={navigationItems} />
+      ) : (
+        <header className=" md:flex justify-center w-40 bg-navy-accent h-screen fixed top-0 ">
+          <div className=" w-full flex mx-auto flex-col justify-between">
+            <div className="flex-center h-80">
+              <Logo width={70} />
+            </div>
+            <nav className="flex-center flex-row md:flex-col">
+              {navigationItems}
+            </nav>
+            <div className="h-80"></div>
+          </div>
+        </header>
+      )}
+    </>
   );
 };
 export default Index;
+
+const MobileHeader: React.FC<{ navigationItems: JSX.Element[] }> = ({
+  navigationItems,
+}) => {
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  return (
+    <header className="flex justify-between p-6 w-full fixed top-0 bg-navy ">
+      <div className="z-10"></div>
+      <div
+        className="w-8 h-8 z-10 cursor-pointer bg-slate-400/20 flex-center"
+        onClick={() => setIsDrawerOpen((prev) => !prev)}
+      >
+        {isDrawerOpen ? (
+          <CloseIcon width={"60%"} />
+        ) : (
+          <Hamburger width={"60%"} />
+        )}
+      </div>
+      {isDrawerOpen && (
+        <div className="absolute w-full bg-navy left-0 top-0 h-screen flex">
+          <div className="h-4/5 flex flex-col m-auto">
+            <div className="flex-center mb-8">
+              <Logo width={70} />
+            </div>
+            {navigationItems}
+          </div>
+        </div>
+      )}
+    </header>
+  );
+};

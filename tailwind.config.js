@@ -4,20 +4,23 @@ module.exports = {
   purge: ["./pages/**/*.tsx", "./components/**/*.tsx", "./layouts/**/*.tsx"],
   content: [],
   theme: {
+    screens: {
+      xs: "480px",
+      ...defaultTheme.screens,
+    },
     extend: {
-      screens: {
-        xs: "480px",
-        ...defaultTheme.screens,
-      },
       fontFamily: {
         sans: ["Raleway", ...defaultTheme.fontFamily.sans],
         body: ["Nunito", ...defaultTheme.fontFamily.sans],
       },
       colors: {
-        navy: "#00022e",
+        navy: "#1d1d1d",
+        "navy-accent": "#181818",
         pink: "#ff0081",
         green: "#17fbff",
         white: "#fff6ff",
+        grey: "#909096",
+        "grey-light": "#282828",
         blue: "#002b5c",
       },
     },

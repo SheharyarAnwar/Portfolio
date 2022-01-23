@@ -17,10 +17,10 @@ const Home: NextPage = () => {
             <ElasticAnimatableText level={1} text={"I'm Sherry,"} />
             <ElasticAnimatableText level={1} text={"web developer"} />
             <div className="mt-8">
-              <p className="tracking-widest">
+              <p className="tracking-widest font-body text-grey">
                 Full Stack Developer / React Expert
               </p>
-              <Button>Contact Me</Button>
+              <Button className="font-body mt-16">Contact Me</Button>
             </div>
           </section>
         </div>

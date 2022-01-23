@@ -47,20 +47,19 @@ const Index: React.FC<Props> = ({ text, level }) => {
       duration: 800,
     });
   };
-  let createHeading = (string: string) => {
+  let createHeading = (string: string, key: number) => {
     return React.createElement(
       `h${level}`,
-      { className: commonClasses, onMouseEnter: handleMouseEnter },
+      { className: commonClasses, onMouseEnter: handleMouseEnter, key },
       string
     );
   };
   const destructureString = (string: string) => {
-    return string.split("").map((val) => {
-      console.log("val", val);
+    return string.split("").map((val, i) => {
       if (val === " ") {
         val = "\u00A0";
       }
-      return createHeading(val);
+      return createHeading(val, i);
     });
   };
 
