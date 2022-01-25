@@ -1,6 +1,11 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import { ElasticAnimatableText, Button, Container } from "../components";
+import {
+  ElasticAnimatableText,
+  Button,
+  Container,
+  ProjectCard,
+} from "../components";
 
 const Home: NextPage = () => {
   return (
@@ -24,6 +29,32 @@ const Home: NextPage = () => {
             </div>
           </section>
         </div>
+        <section className="my-24">
+          <h2 className="text-green">About me</h2>
+          <div className="block m-auto lg:flex ">
+            <div className="w-full lg:w-1/2 py-16 lg:pr-16">
+              <p className="font-body ">
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime
+                ab vero corrupti quam soluta cupiditate deleniti. Sapiente quae
+                dolore fugiat. Modi cupiditate, consectetur quasi natus est
+                fugit amet voluptate blanditiis.
+              </p>
+              <p className="font-body ">
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime
+                ab vero corrupti quam soluta cupiditate deleniti. Sapiente quae
+                dolore fugiat. Modi cupiditate, consectetur quasi natus est
+                fugit amet voluptate blanditiis.
+              </p>
+            </div>
+            <div className="w-1/2 py-16 lg:pr-16">
+              <div className="bg-green w-full h-full "></div>
+            </div>
+          </div>
+        </section>
+        <section className="my-24">
+          <h2 className="text-green">My projects</h2>
+          <ProjectCard />
+        </section>
       </Container>
     </>
   );

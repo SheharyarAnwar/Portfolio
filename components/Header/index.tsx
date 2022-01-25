@@ -23,7 +23,7 @@ const Index: React.FC<Props> = () => {
 
   return (
     <>
-      {queryBreakpoints("md") ? (
+      {queryBreakpoints("lg") ? (
         <MobileHeader navigationItems={navigationItems} />
       ) : (
         <header className=" md:flex justify-center w-40 bg-navy-accent h-screen fixed top-0 ">
