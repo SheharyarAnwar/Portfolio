@@ -22,6 +22,12 @@
 
     transition: all 0.3s ease-out;
   }
+
+  h3 {
+    @apply text-xl xs:text-2xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold;
+
+    transition: all 0.3s ease-out;
+  }
 }
 
 @layer utilities {

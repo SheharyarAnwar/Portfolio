@@ -11,7 +11,7 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ["Raleway", ...defaultTheme.fontFamily.sans],
-        body: ["Nunito", ...defaultTheme.fontFamily.sans],
+        // body: ["Nunito", ...defaultTheme.fontFamily.sans],
       },
       colors: {
         navy: "#1d1d1d",

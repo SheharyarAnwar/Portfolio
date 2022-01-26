@@ -19,7 +19,7 @@ const Index: React.FC<Props> = () => {
       );
     }
   );
-  console.log(queryBreakpoints("lg"));
+  // console.log(queryBreakpoints("lg"));
 
   return (
     <>

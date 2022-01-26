@@ -22,10 +22,10 @@ const Home: NextPage = () => {
             <ElasticAnimatableText level={1} text={"I'm Sherry,"} />
             <ElasticAnimatableText level={1} text={"web developer"} />
             <div className="mt-8">
-              <p className="tracking-widest font-body text-grey">
+              <p className="tracking-widest text-grey">
                 Full Stack Developer / React Expert
               </p>
-              <Button className="font-body mt-16">Contact Me</Button>
+              <Button className=" mt-16">Contact Me</Button>
             </div>
           </section>
         </div>
@@ -33,13 +33,13 @@ const Home: NextPage = () => {
           <h2 className="text-green">About me</h2>
           <div className="block m-auto lg:flex ">
             <div className="w-full lg:w-1/2 py-16 lg:pr-16">
-              <p className="font-body ">
+              <p className=" ">
                 Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime
                 ab vero corrupti quam soluta cupiditate deleniti. Sapiente quae
                 dolore fugiat. Modi cupiditate, consectetur quasi natus est
                 fugit amet voluptate blanditiis.
               </p>
-              <p className="font-body ">
+              <p className=" ">
                 Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime
                 ab vero corrupti quam soluta cupiditate deleniti. Sapiente quae
                 dolore fugiat. Modi cupiditate, consectetur quasi natus est
@@ -51,11 +51,12 @@ const Home: NextPage = () => {
             </div>
           </div>
         </section>
-        <section className="my-24">
-          <h2 className="text-green mb-12">My projects</h2>
+        <section className="my-24 flex flex-col">
+          <h2 className="text-green  mb-12">My projects</h2>
           <ProjectCard />
           <ProjectCard reversed />
           <ProjectCard />
+          <Button className="m-auto">See More</Button>
         </section>
       </Container>
     </>

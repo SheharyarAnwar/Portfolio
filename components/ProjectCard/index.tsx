@@ -19,14 +19,33 @@ const Index: React.FC<Props> = ({ reversed = false }) => {
           width={1366}
           objectFit="fill"
           alt="bg"
+          priority
         />
       </div>
-      <div className={leftClass}>
-        <p className="text-right p-8 bg-navy-accent">
+      <div className={leftClass + " h-full grid grid-cols-12 grid-rows-3"}>
+        <div
+          className={`col-span-full self-center justify-self-${
+            reversed ? "start" : "end"
+          }`}
+        >
+          <p className="text-green text-base mb-2">Web application</p>
+          <h3 className="">Templific</h3>
+        </div>
+        <p className="p-8 bg-navy-accent col-span-12 self-center">
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae
           illo magni reiciendis dicta dolore at officia aliquam blanditiis
           molestias,
         </p>
+
+        <div
+          className={`col-span-full justify-self-${
+            reversed ? "start" : "end"
+          } self-center flex mb-2 gap-8 font-mono text-green`}
+        >
+          <p>React</p>
+          <p>Mongodb</p>
+          <p>Nodejs</p>
+        </div>
       </div>
     </div>
   );
