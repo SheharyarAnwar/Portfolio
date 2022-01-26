@@ -16,7 +16,11 @@ const Index: React.FC<Props> = ({ children, className }) => {
       <div className="flex">
         {/* Space for sticky positioned header */}
         <Header />
-        <div className={`px-6 lg:pl-52 bg-navy ${className}`}>{children}</div>
+        <div
+          className={`pl-6 pr-6 sm:pl-12 sm:pr-12 md:pl-24 md:pr-24 lg:pr-20 lg:pl-60 2xl:pr-24 2xl:pl-64 bg-navy ${className}`}
+        >
+          {children}
+        </div>
       </div>
     </>
   );

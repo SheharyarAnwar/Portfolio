@@ -46,13 +46,15 @@ const Home: NextPage = () => {
                 fugit amet voluptate blanditiis.
               </p>
             </div>
-            <div className="w-1/2 py-16 lg:pr-16">
+            <div className="w-1/2 py-16 ">
               <div className="bg-green w-full h-full "></div>
             </div>
           </div>
         </section>
         <section className="my-24">
-          <h2 className="text-green">My projects</h2>
+          <h2 className="text-green mb-12">My projects</h2>
+          <ProjectCard />
+          <ProjectCard reversed />
           <ProjectCard />
         </section>
       </Container>
