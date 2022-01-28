@@ -28,6 +28,12 @@
 
     transition: all 0.3s ease-out;
   }
+
+  h4 {
+    @apply text-xl lg:text-2xl font-bold;
+
+    transition: all 0.3s ease-out;
+  }
 }
 
 @layer utilities {

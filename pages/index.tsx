@@ -5,6 +5,7 @@ import {
   Button,
   Container,
   ProjectCard,
+  BlogCard,
 } from "../components";
 
 const Home: NextPage = () => {
@@ -52,10 +53,21 @@ const Home: NextPage = () => {
           </div>
         </section>
         <section className="my-24 flex flex-col">
-          <h2 className="text-green  mb-12">My projects</h2>
+          <h2 className="text-green mb-12">My projects</h2>
           <ProjectCard />
           <ProjectCard reversed />
           <ProjectCard />
+          <Button className="m-auto">See More</Button>
+        </section>
+        <section className="my-24 flex flex-col">
+          <h2 className="text-green mb-12">Blog Posts</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-4 gap-10">
+            <BlogCard></BlogCard>
+            <BlogCard></BlogCard>
+            <BlogCard></BlogCard>
+            <BlogCard></BlogCard>
+            <BlogCard></BlogCard>
+          </div>
           <Button className="m-auto">See More</Button>
         </section>
       </Container>
