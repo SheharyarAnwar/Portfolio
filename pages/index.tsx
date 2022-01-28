@@ -7,6 +7,7 @@ import {
   ProjectCard,
   BlogCard,
 } from "../components";
+import Section from "../layouts/Section";
 
 const Home: NextPage = () => {
   return (
@@ -17,8 +18,8 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Container>
-        <div className="h-screen flex items-center">
-          <section className="inline-block">
+        <section className="h-screen flex items-center">
+          <div className="inline-block">
             <ElasticAnimatableText level={1} text={"Hi"} />
             <ElasticAnimatableText level={1} text={"I'm Sherry,"} />
             <ElasticAnimatableText level={1} text={"web developer"} />
@@ -28,10 +29,9 @@ const Home: NextPage = () => {
               </p>
               <Button className=" mt-16">Contact Me</Button>
             </div>
-          </section>
-        </div>
-        <section className="my-24">
-          <h2 className="text-green">About me</h2>
+          </div>
+        </section>
+        <Section title="About Me">
           <div className="block m-auto lg:flex ">
             <div className="w-full lg:w-1/2 py-16 lg:pr-16">
               <p className=" ">
@@ -51,25 +51,21 @@ const Home: NextPage = () => {
               <div className="bg-green w-full h-full "></div>
             </div>
           </div>
-        </section>
-        <section className="my-24 flex flex-col">
-          <h2 className="text-green mb-12">My projects</h2>
+        </Section>
+        <Section title="My Projects">
           <ProjectCard />
           <ProjectCard reversed />
           <ProjectCard />
           <Button className="m-auto">See More</Button>
-        </section>
-        <section className="my-24 flex flex-col">
-          <h2 className="text-green mb-12">Blog Posts</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-4 gap-10">
-            <BlogCard></BlogCard>
-            <BlogCard></BlogCard>
-            <BlogCard></BlogCard>
+        </Section>
+        <Section title="Blog Posts">
+          <div className="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-4 gap-10 py-16">
             <BlogCard></BlogCard>
             <BlogCard></BlogCard>
           </div>
           <Button className="m-auto">See More</Button>
-        </section>
+        </Section>
+        <Section title="Contact Me"></Section>
       </Container>
     </>
   );
