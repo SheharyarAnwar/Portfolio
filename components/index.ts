@@ -5,3 +5,4 @@ export { default as ElasticAnimatableText } from "./ElasticAnimatableText";
 export { default as ProjectCard } from "./ProjectCard";
 export { default as BlogCard } from "./BlogCard";
 export { default as Tag } from "./Tag";
+export { default as Globe } from "./Globe";

@@ -6,6 +6,7 @@ import {
   Container,
   ProjectCard,
   BlogCard,
+  Globe,
 } from "../components";
 import Section from "../layouts/Section";
 
@@ -65,7 +66,11 @@ const Home: NextPage = () => {
           </div>
           <Button className="m-auto">See More</Button>
         </Section>
-        <Section title="Contact Me"></Section>
+        <Section title="Contact Me">
+          <div className="h-screen">
+            <Globe></Globe>
+          </div>
+        </Section>
       </Container>
     </>
   );
