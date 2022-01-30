@@ -67,9 +67,12 @@ const Home: NextPage = () => {
           <Button className="m-auto">See More</Button>
         </Section>
         <Section title="Contact Me">
-          <div className="h-screen">
-            <Globe></Globe>
-          </div>
+          <p className="py-16">
+            I’m interested in freelance opportunities – especially ambitious or
+            large projects. However, if you have other request or question,
+            don’t hesitate to use the form.
+          </p>
+          <Button className="m-auto">Say Hello!</Button>
         </Section>
       </Container>
     </>
@@ -77,3 +80,24 @@ const Home: NextPage = () => {
 };
 
 export default Home;
+{
+  /* <div className="grid grid-cols-12 gap-10">
+            <div className="col-span-12 lg:col-span-6 py-16 ">
+              <p>
+                I’m interested in freelance opportunities – especially ambitious
+                or large projects. However, if you have other request or
+                question, don’t hesitate to use the form.
+              </p>
+              <form className="grid grid-cols-12 gap-8 pt-6">
+                <input className="px-6 py-4 col-span-6"></input>
+                <input className="col-span-6"></input>
+                <textarea className="col-span-12"></textarea>
+              </form>
+            </div>
+            <div className="col-span-12 lg:col-span-6 py-16 ">
+              <div className="bg-green w-full h-full ">
+                <div className="w-8 h-8">Map</div>
+              </div>
+            </div>
+          </div> */
+}

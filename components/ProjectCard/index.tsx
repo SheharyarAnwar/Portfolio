@@ -36,8 +36,8 @@ const Index: React.FC<Props> = ({ reversed = false }) => {
         }
       >
         <div
-          className={`col-span-full self-center justify-self-center lg:justify-self-${
-            reversed ? "start" : "end"
+          className={`col-span-full self-center justify-self-center ${
+            reversed ? "lg:justify-self-start" : "lg:justify-self-end"
           }`}
         >
           <p className="text-center lg:text-left text-green text-base mb-2">
