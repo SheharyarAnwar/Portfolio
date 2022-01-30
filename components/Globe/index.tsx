@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import classes from "./index.module.css";
 
 type Speed = "slow" | "normal" | "fast";
@@ -16,8 +16,29 @@ interface Props {
   paused?: boolean;
 }
 const Index: React.FC<Props> = ({
-  tags = ["HTML", "CSS", "React", "Node"],
-  radius = 100,
+  tags = [
+    "HTML",
+    "CSS",
+    "Typescript",
+    "Javascript",
+    "Graphql",
+    "Redux",
+    "RTK",
+    "Rest",
+    "MUI",
+    "GSAP",
+    "Tailwind",
+    "React",
+    "Next",
+    "Gatsby",
+    "Node",
+    "Express",
+    "MongoDB",
+    "SQL",
+    "AWS",
+    "Firebase",
+  ],
+  radius = 300,
   depth = radius * 2,
   size = 1.5 * radius,
   maxSpeed = "normal",
@@ -33,8 +54,10 @@ const Index: React.FC<Props> = ({
   const previousTimeRef = React.useRef();
   let maxSpeedMapped = maxSpeedMappings[maxSpeed];
   let initSpeedMapped = initSpeedMappings[initSpeed];
-  let mouseX0 = initSpeedMapped * Math.sin(direction * (Math.PI / 180));
-  let mouseY0 = -initSpeedMapped * Math.cos(direction * (Math.PI / 180));
+
+  const mouseX0 = initSpeedMapped * Math.sin(direction * (Math.PI / 180));
+
+  const mouseY0 = -initSpeedMapped * Math.cos(direction * (Math.PI / 180));
 
   const [mouseX, setMouseX] = useState(mouseX0);
   const [mouseY, setMouseY] = useState(mouseY0);
@@ -67,10 +90,15 @@ const Index: React.FC<Props> = ({
       );
     };
   }, []);
+  useEffect(() => {
+    //@ts-ignore
+    cancelAnimationFrame(requestRef.current);
+    //@ts-ignore
+    requestRef.current = requestAnimationFrame(animate);
+  }, [active, mouseX, mouseY]);
 
-  const createTagElements = () => {
+  const createTagElements = useMemo(() => {
     return tags.map((val, i) => {
-      const { x, y, z } = computePosition(i);
       return (
         <span
           key={i}
@@ -82,7 +110,7 @@ const Index: React.FC<Props> = ({
         </span>
       );
     });
-  };
+  }, []);
   const animate = (time: number) => {
     if (paused) return;
     if (previousTimeRef.current != undefined) {
@@ -101,6 +129,7 @@ const Index: React.FC<Props> = ({
       const b =
         (Math.min(Math.max(-mouseX, -size), size) / radius) * maxSpeedMapped;
       if (Math.abs(a) <= 0.01 && Math.abs(b) <= 0.01) return; // pause
+
       const l = Math.PI / 180;
       const sc = [
         Math.sin(a * l),
@@ -121,14 +150,14 @@ const Index: React.FC<Props> = ({
         item.x = rx2;
         item.y = ry2;
         item.z = rz2;
-        let scale = per.toFixed(3);
+        item.scale = per.toFixed(3);
         let alpha = per * per - 0.25;
         //@ts-ignore
         alpha = (alpha > 1 ? 1 : alpha).toFixed(3);
-        console.log(alpha);
+
         const left = (item.x - el!.offsetWidth / 2).toFixed(2);
         const top = (item.y - el!.offsetHeight / 2).toFixed(2);
-        el!.style.transform = `translate3d(${left}px, ${top}px, 0) scale(${scale})`;
+        el!.style.transform = `translate3d(${left}px, ${top}px, 0) scale(${item.scale})`;
         el!.style.filter = `alpha(opacity=${100 * alpha})`;
         el!.style.opacity = `${alpha}`;
       });
@@ -151,16 +180,19 @@ const Index: React.FC<Props> = ({
   };
   return (
     <div
-      onMouseOver={() => setActive(true)}
+      onMouseOver={() => {
+        setActive(true);
+      }}
       onMouseOut={() => setActive(false)}
       ref={containerRef}
       style={{
         position: "relative",
+        margin: "auto",
         height: `${2 * radius}px`,
         width: `${2 * radius}px`,
       }}
     >
-      {createTagElements()}
+      {createTagElements}
     </div>
   );
 };
