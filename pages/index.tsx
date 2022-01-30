@@ -73,6 +73,7 @@ const Home: NextPage = () => {
             don’t hesitate to use the form.
           </p>
           <Button className="m-auto">Say Hello!</Button>
+          <Globe />
         </Section>
       </Container>
     </>

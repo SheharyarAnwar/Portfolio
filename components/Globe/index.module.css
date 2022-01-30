@@ -1,0 +1,15 @@
+/* stylelint-disable*/
+.sphere {
+  @apply mt-20 w-80 aspect-square m-auto border-2 border-solid rounded-[50%] relative;
+
+  perspective: 20rem;
+}
+
+.tag {
+  @apply absolute top-1/2 left-1/2 opacity-0 origin-center;
+
+  will-change: transform, opacity, filter;
+
+  filter: alpha(opacity=0);
+  transform: translate3d(-50%, -50%, 0) scale(1);
+}
