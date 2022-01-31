@@ -2,8 +2,8 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import classes from "./index.module.css";
 
 type Speed = "slow" | "normal" | "fast";
-const maxSpeedMappings = { slow: 0.5, normal: 1, fast: 2 };
-const initSpeedMappings = { slow: 16, normal: 32, fast: 80 };
+const maxSpeedMappings = { slow: 0.5, normal: 1, fast: 6 };
+const initSpeedMappings = { slow: 16, normal: 32, fast: 40 };
 interface Props {
   tags?: Array<String>;
   radius?: number;
@@ -41,10 +41,10 @@ const Index: React.FC<Props> = ({
   radius = 300,
   depth = radius * 2,
   size = 1.5 * radius,
-  maxSpeed = "normal",
-  initSpeed = "normal",
+  maxSpeed = "fast",
+  initSpeed = "fast",
   direction = 135,
-  keep = true,
+  keep = false,
   paused = false,
 }) => {
   const [active, setActive] = useState(false);
@@ -55,8 +55,13 @@ const Index: React.FC<Props> = ({
   let maxSpeedMapped = maxSpeedMappings[maxSpeed];
   let initSpeedMapped = initSpeedMappings[initSpeed];
 
-  const mouseX0 = initSpeedMapped * Math.sin(direction * (Math.PI / 180));
-  const mouseY0 = initSpeedMapped * Math.cos(direction * (Math.PI / 180));
+  const [mouseX0, setMouseX0] = useState(
+    initSpeedMapped * Math.sin(direction * (Math.PI / 180))
+  );
+  const [mouseY0, setMouseY0] = useState(
+    initSpeedMapped * Math.cos(direction * (Math.PI / 180))
+  );
+
   const [mouseX, setMouseX] = useState(mouseX0);
   const [mouseY, setMouseY] = useState(mouseY0);
   const handleMouseMove = (ev: any) => {
@@ -181,7 +186,12 @@ const Index: React.FC<Props> = ({
       onMouseOver={() => {
         setActive(true);
       }}
-      onMouseOut={() => setActive(false)}
+      onMouseOut={() => {
+        setActive(false);
+
+        setMouseX0(mouseX);
+        setMouseY0(mouseY);
+      }}
       ref={containerRef}
       style={{
         position: "relative",
