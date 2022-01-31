@@ -6,8 +6,8 @@ type Props =
       level: 1 | 2 | 3 | 4 | 5 | 6;
       stagger?: boolean;
       inlineStaggerDelay?: number;
-      blockStagger: never;
-      previousBlockSize: never;
+      blockStagger?: never;
+      previousBlockSize?: never;
     }
   | {
       text: string;
