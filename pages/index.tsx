@@ -8,9 +8,15 @@ import {
   BlogCard,
   Globe,
 } from "../components";
+import { useBreakpoints } from "../hooks";
 import Section from "../layouts/Section";
 
 const Home: NextPage = () => {
+  const { queryBreakpoints } = useBreakpoints();
+  let radius = 400 / 1.5;
+  if (queryBreakpoints("lg")) {
+    radius = 300 / 1.5;
+  }
   return (
     <>
       <Head>
@@ -33,25 +39,13 @@ const Home: NextPage = () => {
           </div>
         </section>
         <Section title="About Me">
-          <div className="block m-auto lg:flex ">
-            <div className="w-full lg:w-1/2 py-16 lg:pr-16">
-              <p className=" ">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime
-                ab vero corrupti quam soluta cupiditate deleniti. Sapiente quae
-                dolore fugiat. Modi cupiditate, consectetur quasi natus est
-                fugit amet voluptate blanditiis.
-              </p>
-              <p className=" ">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime
-                ab vero corrupti quam soluta cupiditate deleniti. Sapiente quae
-                dolore fugiat. Modi cupiditate, consectetur quasi natus est
-                fugit amet voluptate blanditiis.
-              </p>
-            </div>
-            <div className="w-1/2 py-16 ">
-              <div className="bg-green w-full h-full "></div>
-            </div>
-          </div>
+          <p className=" pt-16 pb-8">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime ab
+            vero corrupti quam soluta cupiditate deleniti. Sapiente quae dolore
+            fugiat. Modi cupiditate, consectetur quasi natus est fugit amet
+            voluptate blanditiis.
+          </p>
+          {queryBreakpoints("xs") ? null : <Globe radius={radius} />}
         </Section>
         <Section title="My Projects">
           <ProjectCard />
@@ -73,7 +67,6 @@ const Home: NextPage = () => {
             don’t hesitate to use the form.
           </p>
           <Button className="m-auto">Say Hello!</Button>
-          <Globe />
         </Section>
       </Container>
     </>
@@ -89,11 +82,6 @@ export default Home;
                 or large projects. However, if you have other request or
                 question, don’t hesitate to use the form.
               </p>
-              <form className="grid grid-cols-12 gap-8 pt-6">
-                <input className="px-6 py-4 col-span-6"></input>
-                <input className="col-span-6"></input>
-                <textarea className="col-span-12"></textarea>
-              </form>
             </div>
             <div className="col-span-12 lg:col-span-6 py-16 ">
               <div className="bg-green w-full h-full ">

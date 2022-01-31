@@ -5,7 +5,7 @@ type Speed = "slow" | "normal" | "fast";
 const maxSpeedMappings = { slow: 0.5, normal: 1, fast: 2 };
 const initSpeedMappings = { slow: 16, normal: 32, fast: 80 };
 interface Props {
-  tags: Array<String>;
+  tags?: Array<String>;
   radius?: number;
   depth?: number;
   size?: number;
@@ -56,9 +56,7 @@ const Index: React.FC<Props> = ({
   let initSpeedMapped = initSpeedMappings[initSpeed];
 
   const mouseX0 = initSpeedMapped * Math.sin(direction * (Math.PI / 180));
-
-  const mouseY0 = -initSpeedMapped * Math.cos(direction * (Math.PI / 180));
-
+  const mouseY0 = initSpeedMapped * Math.cos(direction * (Math.PI / 180));
   const [mouseX, setMouseX] = useState(mouseX0);
   const [mouseY, setMouseY] = useState(mouseY0);
   const handleMouseMove = (ev: any) => {
@@ -95,7 +93,7 @@ const Index: React.FC<Props> = ({
     cancelAnimationFrame(requestRef.current);
     //@ts-ignore
     requestRef.current = requestAnimationFrame(animate);
-  }, [active, mouseX, mouseY]);
+  }, [active, mouseX, mouseY, radius, containerRef]);
 
   const createTagElements = useMemo(() => {
     return tags.map((val, i) => {
@@ -110,10 +108,10 @@ const Index: React.FC<Props> = ({
         </span>
       );
     });
-  }, []);
+  }, [radius]);
   const animate = (time: number) => {
     if (paused) return;
-    if (previousTimeRef.current != undefined) {
+    if (containerRef.current != null && previousTimeRef.current != undefined) {
       // const deltaTime = time - previousTimeRef.current;
 
       if (!keep && !active) {
