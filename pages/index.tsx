@@ -1,5 +1,6 @@
 import type { NextPage } from "next";
 import Head from "next/head";
+import { useEffect, useRef, useState } from "react";
 import {
   ElasticAnimatableText,
   Button,
@@ -7,12 +8,24 @@ import {
   ProjectCard,
   BlogCard,
   Globe,
+  Tendrils,
 } from "../components";
 import { useBreakpoints } from "../hooks";
 import Section from "../layouts/Section";
 const introHeading = ["Hi", "I'm Sherry,", "web developer"];
 const Home: NextPage = () => {
   const { queryBreakpoints } = useBreakpoints();
+  const [height, setHeight] = useState(0);
+  const [width, setWidth] = useState(0);
+  const canvasContainerRef = useRef(null);
+  const updateCanvasDimensions = () => {
+    if (canvasContainerRef.current) {
+      const el = canvasContainerRef.current;
+      const { height, width } = getComputedStyle(el);
+      setHeight(parseInt(height.split("px")[0]));
+      setWidth(parseInt(width.split("px")[0]));
+    }
+  };
   let radius = 400 / 1.5;
   if (queryBreakpoints("lg")) {
     radius = 300 / 1.5;
@@ -20,6 +33,12 @@ const Home: NextPage = () => {
   if (queryBreakpoints("xs")) {
     radius = 190 / 1.5;
   }
+  useEffect(() => {
+    updateCanvasDimensions();
+
+    window.addEventListener("resize", updateCanvasDimensions);
+    return () => window.removeEventListener("resize", updateCanvasDimensions);
+  }, []);
   return (
     <>
       <Head>
@@ -28,7 +47,10 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Container>
-        <section className="h-screen flex items-center">
+        <section
+          ref={canvasContainerRef}
+          className="relative h-screen flex items-center"
+        >
           <div className="inline-block">
             {introHeading.map((val, i) => {
               return (
@@ -49,6 +71,7 @@ const Home: NextPage = () => {
               <Button className=" mt-16">Contact Me</Button>
             </div>
           </div>
+          <Tendrils height={height} width={width} />
         </section>
         <Section title="About Me">
           <p className=" pt-16 pb-8">
