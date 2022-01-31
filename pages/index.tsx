@@ -10,7 +10,7 @@ import {
 } from "../components";
 import { useBreakpoints } from "../hooks";
 import Section from "../layouts/Section";
-
+const introHeading = ["Hi", "I'm Sherry,", "web developer"];
 const Home: NextPage = () => {
   const { queryBreakpoints } = useBreakpoints();
   let radius = 400 / 1.5;
@@ -27,9 +27,18 @@ const Home: NextPage = () => {
       <Container>
         <section className="h-screen flex items-center">
           <div className="inline-block">
-            <ElasticAnimatableText level={1} text={"Hi"} />
-            <ElasticAnimatableText level={1} text={"I'm Sherry,"} />
-            <ElasticAnimatableText level={1} text={"web developer"} />
+            {introHeading.map((val, i) => {
+              return (
+                <ElasticAnimatableText
+                  level={1}
+                  text={val}
+                  stagger
+                  blockStagger
+                  previousBlockSize={introHeading[i - 1]?.length || 0}
+                />
+              );
+            })}
+
             <div className="mt-8">
               <p className="tracking-widest text-grey">
                 Full Stack Developer / React Expert

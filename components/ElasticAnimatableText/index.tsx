@@ -1,56 +1,77 @@
-import React from "react";
-interface Props {
-  text: string;
-  level: 1 | 2 | 3 | 4 | 5 | 6;
-}
-const Index: React.FC<Props> = ({ text, level }) => {
-  let commonClasses = "inline-block hover:text-green";
-  const animationKeyframes = (
-    keyFrames: number,
-    xAmp: number,
-    yAmp: number,
-    holdKeyFrame = 0
-  ) => {
-    let arr = [];
-    let holdKeyframesSnapshot = holdKeyFrame;
-    for (let i = 1; i <= keyFrames; i++) {
-      let matrix = `matrix(1,0,0,1,0,0)`;
-      if (i % 2 !== 0) {
-        // let decayX = 1 + Math.abs(xAmp - 1) / (1 + i - holdKeyframesSnapshot);
-        let decayX = 1 + Math.abs(xAmp - 1) / (i - holdKeyframesSnapshot);
-        // let decayY = 1 - Math.abs(yAmp - 1) / (1 + i - holdKeyframesSnapshot);
-        let decayY = 1 - Math.abs(yAmp - 1) / (i - holdKeyframesSnapshot);
-        matrix = `matrix(${decayX},0,0,${decayY},0,0)`;
-      }
-      if (holdKeyFrame > 0) {
-        matrix = `matrix(${xAmp},0,0,${yAmp},0,0)`;
-        arr.push({
-          transform: matrix,
-          offset: holdKeyFrame / keyFrames,
-        });
-        holdKeyFrame = 0;
-      } else {
-        if (i >= holdKeyframesSnapshot) {
-          arr.push({
-            transform: matrix,
-          });
-        }
-      }
+import React, { useEffect, useRef } from "react";
+import { useInView } from "react-intersection-observer";
+type Props =
+  | {
+      text: string;
+      level: 1 | 2 | 3 | 4 | 5 | 6;
+      stagger?: boolean;
+      inlineStaggerDelay?: number;
+      blockStagger: never;
+      previousBlockSize: never;
     }
-    return arr;
-  };
+  | {
+      text: string;
+      level: 1 | 2 | 3 | 4 | 5 | 6;
+      stagger?: boolean;
+      inlineStaggerDelay?: number;
+      blockStagger: boolean;
+      previousBlockSize: number;
+    };
+const Index: React.FC<Props> = ({
+  text,
+  level,
+  stagger = false,
+  inlineStaggerDelay = 100,
+  blockStagger = false,
+  previousBlockSize = 0,
+}) => {
+  let commonClasses = "inline-block hover:text-green scale-0";
+  const { ref, inView } = useInView({ triggerOnce: true });
+  const blockStaggerDelay = blockStagger
+    ? inlineStaggerDelay * previousBlockSize
+    : 0;
+  const refArray = useRef<Array<any>>([]);
+  const keyFrameArr: React.CSSProperties[] = [
+    { transform: "scale3d(1, 1, 1)" },
+    { transform: "scale3d(1.25, 0.75, 1)", offset: 0.3 },
+    { transform: "scale3d(0.75, 1.25, 1)", offset: 0.4 },
+    { transform: "scale3d(1.15, 0.85, 1)", offset: 0.5 },
+    { transform: "scale3d(0.95, 1.05, 1)", offset: 0.65 },
+    { transform: "scale3d(1.05, 0.95, 1)", offset: 0.75 },
+    { transform: "scale3d(1, 1, 1)" },
+  ];
+  useEffect(() => {
+    if (inView && stagger) {
+      refArray.current.forEach((val, i) => {
+        let anim = val.animate(
+          [{ transform: "scale3d(0,0,0)" }, ...keyFrameArr],
+          {
+            duration: 1000,
+            delay: inlineStaggerDelay * i + blockStaggerDelay,
+          }
+        );
+        anim.play();
+        anim.onfinish = () => (val.style.transform = "scale3d(1,1,1)");
+      });
+    }
+  }, [inView]);
 
   const handleMouseEnter = (event: MouseEvent) => {
     const element = event.target;
     //@ts-ignore
-    element.animate(animationKeyframes(8, 1.2, 0.6, 2), {
-      duration: 800,
+    element.animate(keyFrameArr, {
+      duration: 1000,
     });
   };
   let createHeading = (string: string, key: number) => {
     return React.createElement(
       `h${level}`,
-      { className: commonClasses, onMouseEnter: handleMouseEnter, key },
+      {
+        className: commonClasses,
+        onMouseEnter: handleMouseEnter,
+        key,
+        ref: (el: HTMLElement) => (refArray.current[key] = el),
+      },
       string
     );
   };
@@ -63,6 +84,6 @@ const Index: React.FC<Props> = ({ text, level }) => {
     });
   };
 
-  return <div>{destructureString(text)}</div>;
+  return <div ref={ref}>{destructureString(text)}</div>;
 };
 export default Index;
