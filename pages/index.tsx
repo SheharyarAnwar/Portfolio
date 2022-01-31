@@ -17,6 +17,9 @@ const Home: NextPage = () => {
   if (queryBreakpoints("lg")) {
     radius = 300 / 1.5;
   }
+  if (queryBreakpoints("xs")) {
+    radius = 190 / 1.5;
+  }
   return (
     <>
       <Head>
@@ -54,7 +57,11 @@ const Home: NextPage = () => {
             fugiat. Modi cupiditate, consectetur quasi natus est fugit amet
             voluptate blanditiis.
           </p>
-          {queryBreakpoints("xs") ? null : <Globe radius={radius} />}
+          {queryBreakpoints("xs") ? (
+            <Globe radius={radius} />
+          ) : (
+            <Globe radius={radius} />
+          )}
         </Section>
         <Section title="My Projects">
           <ProjectCard />

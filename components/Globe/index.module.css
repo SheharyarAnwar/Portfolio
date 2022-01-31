@@ -6,7 +6,7 @@
 }
 
 .tag {
-  @apply absolute top-1/2 left-1/2 opacity-0 origin-center text-green font-bold;
+  @apply text-xs font-medium xs:font-bold xs:text-base absolute top-1/2 left-1/2 opacity-0 origin-center text-green;
 
   will-change: transform, opacity, filter;
 
