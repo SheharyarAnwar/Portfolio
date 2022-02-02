@@ -35,7 +35,7 @@ const Index: React.FC<Props> = ({ title, children }) => {
           <ElasticAnimatableText level={2} text={title} stagger={true} />
         </div>
         {/* <h2>{title}</h2> */}
-        <div ref={setRefs} style={{ opacity: 0 }}>
+        <div className="flex flex-col" ref={setRefs} style={{ opacity: 0 }}>
           {children}
         </div>
       </section>

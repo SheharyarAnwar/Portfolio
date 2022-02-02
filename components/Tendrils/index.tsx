@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
+import { useInView } from "react-intersection-observer";
 
 interface ITendrils {
   friction: number;
@@ -20,7 +21,8 @@ const Index: React.FC<Props> = ({
     tension = 0.98,
   },
 }) => {
-  const ref = useRef<HTMLCanvasElement>(null);
+  const ref = useRef<HTMLCanvasElement | null>(null);
+  const [inViewRef, inView] = useInView();
   const tendrilRef = useRef<Array<any>>([]);
   const [height, setHeight] = useState(0);
   const [width, setWidth] = useState(0);
@@ -41,9 +43,12 @@ const Index: React.FC<Props> = ({
   useEffect(() => {
     //@ts-ignore
     cancelAnimationFrame(requestRef.current);
-    //@ts-ignore
-    requestRef.current = requestAnimationFrame(animate);
-  }, [mouseX, mouseY, ref]);
+
+    if (inView) {
+      //@ts-ignore
+      requestRef.current = requestAnimationFrame(animate);
+    }
+  }, [mouseX, mouseY, ref, inView]);
   useEffect(() => {
     const parent = ref?.current?.parentElement;
     parent?.addEventListener("mousemove", handleMouseMove);
@@ -55,6 +60,13 @@ const Index: React.FC<Props> = ({
       window.removeEventListener("resize", updateCanvasDimensions);
     };
   }, []);
+  const setRefs = useCallback(
+    (node) => {
+      ref.current = node;
+      inViewRef(node);
+    },
+    [inViewRef]
+  );
   const updateCanvasDimensions = useCallback(() => {
     if (ref.current) {
       const x = ref.current.parentElement;
@@ -93,6 +105,7 @@ const Index: React.FC<Props> = ({
     }
   }, []);
   const animate = (time: number) => {
+    console.log(time);
     if (previousTimeRef.current && ref.current) {
       const ctx = ref.current.getContext("2d");
       ctx!.globalCompositeOperation = "source-over";
@@ -117,7 +130,7 @@ const Index: React.FC<Props> = ({
 
   return (
     <canvas
-      ref={ref}
+      ref={setRefs}
       className="absolute top-0 left-0 "
       height={height}
       width={width}
