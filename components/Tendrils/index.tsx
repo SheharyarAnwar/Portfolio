@@ -1,12 +1,212 @@
-import React, { useEffect, useRef } from "react";
-interface Props extends React.CanvasHTMLAttributes<HTMLCanvasElement> {}
+import React, { useEffect, useRef, useState } from "react";
 
-const Index: React.FC<Props> = (props) => {
-  const ref = useRef(null);
-  useEffect(() => {}, []);
+interface ITendrils {
+  friction: number;
+  trails: number;
+  size: number;
+  dampening: number;
+  tension: number;
+}
+interface Props extends React.CanvasHTMLAttributes<HTMLCanvasElement> {
+  options: Partial<ITendrils>;
+}
+
+const Index: React.FC<Props> = ({
+  options: {
+    friction = 0.5,
+    trails = 30,
+    size = 50,
+    dampening = 0.25,
+    tension = 0.98,
+  },
+}) => {
+  const ref = useRef<HTMLCanvasElement>(null);
+  const tendrilRef = useRef<Array<any>>([]);
+  const [height, setHeight] = useState(0);
+  const [width, setWidth] = useState(0);
+  const [mouseX, setMouseX] = useState(0);
+  const [mouseY, setMouseY] = useState(0);
+
+  const requestRef = React.useRef();
+  const previousTimeRef = React.useRef();
+  useEffect(() => {
+    if (tendrilRef.current) {
+      reset();
+    }
+    //@ts-ignore
+    requestRef.current = requestAnimationFrame(animate);
+    //@ts-ignore
+    return () => cancelAnimationFrame(requestRef.current);
+  }, []);
+  useEffect(() => {
+    //@ts-ignore
+    cancelAnimationFrame(requestRef.current);
+    //@ts-ignore
+    requestRef.current = requestAnimationFrame(animate);
+  }, [mouseX, mouseY, ref]);
+  useEffect(() => {
+    const parent = ref?.current?.parentElement;
+    parent?.addEventListener("mousemove", handleMouseMove);
+    updateCanvasDimensions();
+
+    window.addEventListener("resize", updateCanvasDimensions);
+    return () => {
+      parent?.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("resize", updateCanvasDimensions);
+    };
+  }, []);
+  const updateCanvasDimensions = () => {
+    if (ref.current) {
+      const x = ref.current.parentElement;
+      setHeight(window.innerHeight);
+      setWidth(parseInt(window.getComputedStyle(x!).width));
+      // setWidth(document.body.clientWidth);
+    }
+  };
+  const handleMouseMove = (ev: any) => {
+    if (ref.current) {
+      let x, y;
+
+      if (ev.touches) {
+        x = ev.touches[0].pageX;
+        y = ev.touches[0].pageY;
+      } else {
+        x = ev.clientX;
+        y = ev.clientY;
+      }
+
+      setMouseX(x);
+      setMouseY(y);
+      // setCursorPosition({ x, y });
+    }
+  };
+  const reset = () => {
+    for (var i = 0; i < trails; i++) {
+      let tendril = new Tendril({
+        spring: 0.45 + 0.025 * (i / trails),
+        friction,
+        dampening,
+        size,
+        tension,
+      });
+      tendrilRef.current.push(tendril);
+    }
+  };
+  const animate = (time: number) => {
+    if (previousTimeRef.current && ref.current) {
+      const ctx = ref.current.getContext("2d");
+      ctx!.globalCompositeOperation = "source-over";
+      ctx!.fillStyle = "#1D1D1D";
+      ctx!.fillRect(0, 0, ctx!.canvas.width, ctx!.canvas.height);
+      ctx!.globalCompositeOperation = "lighter";
+      ctx!.strokeStyle = "hsla(346,98%,56%,0.25)";
+      ctx!.lineWidth = 1;
+
+      tendrilRef.current.forEach((val) => {
+        const target = { x: mouseX, y: mouseY };
+
+        val.update(target);
+        val.draw(ctx);
+      });
+    }
+    //@ts-ignore
+    previousTimeRef.current = time;
+    //@ts-ignore
+    requestRef.current = requestAnimationFrame(animate);
+  };
 
   return (
-    <canvas ref={ref} className="absolute top-0 left-0" {...props}></canvas>
+    <canvas
+      ref={ref}
+      className="absolute top-0 left-0 "
+      height={height}
+      width={width}
+    ></canvas>
   );
 };
 export default Index;
+
+class Node {
+  x: number;
+  y: number;
+  vx: number;
+  vy: number;
+  constructor() {
+    this.x = 0;
+    this.y = 0;
+    this.vy = 0;
+    this.vx = 0;
+  }
+}
+class Tendril {
+  spring: number;
+  friction: number;
+  nodes: Node[];
+  dampening: number;
+  tension: number;
+
+  constructor({
+    spring,
+    friction,
+    dampening,
+    size,
+    tension,
+  }: Omit<ITendrils, "trails"> & { spring: number }) {
+    this.spring = spring + Math.random() * 0.1 - 0.05;
+    this.friction = friction + Math.random() * 0.01 - 0.005;
+    this.nodes = [];
+    this.dampening = dampening;
+    this.tension = tension;
+    for (let i = 0, node; i < size; i++) {
+      node = new Node();
+      node.x = 0;
+      node.y = 0;
+
+      this.nodes.push(node);
+    }
+  }
+  update(target: { x: number; y: number }) {
+    let spring = this.spring;
+    let node = this.nodes[0];
+    node.vx += target.x - node.x;
+    node.vy += target.y - node.y;
+    for (let prev, i = 0, n = this.nodes.length; i < n; i++) {
+      node = this.nodes[i];
+
+      if (i > 0) {
+        prev = this.nodes[i - 1];
+
+        node.vx += (prev.x - node.x) * spring;
+        node.vy += (prev.y - node.y) * spring;
+
+        node.vx += prev.vx * this.dampening;
+        node.vy += prev.vy * this.dampening;
+      }
+
+      node.vx *= this.friction;
+      node.vy *= this.friction;
+      node.x += node.vx;
+      node.y += node.vy;
+
+      spring *= this.tension;
+    }
+  }
+  draw(ctx: CanvasRenderingContext2D) {
+    let x, y, a, b;
+
+    ctx.beginPath();
+
+    for (let i = 0, n = this.nodes.length - 1; i < n; i++) {
+      a = this.nodes[i];
+      b = this.nodes[i + 1];
+      // means
+      x = (a.x + b.x) * 0.5;
+      y = (a.y + b.y) * 0.5;
+
+      ctx.quadraticCurveTo(a.x, a.y, x, y);
+    }
+
+    ctx.stroke();
+    ctx.closePath();
+  }
+}

@@ -26,7 +26,7 @@ const Index: React.FC<Props> = () => {
       {queryBreakpoints("lg") ? (
         <MobileHeader navigationItems={navigationItems} />
       ) : (
-        <header className=" md:flex justify-center w-40 bg-navy-accent h-screen fixed top-0 ">
+        <header className=" md:flex justify-center w-40 bg-navy-accent h-screen fixed top-0 z-50 ">
           <div className=" w-full flex mx-auto flex-col justify-between">
             <div className="flex-center h-80">
               <Logo width={70} />
@@ -48,7 +48,7 @@ const MobileHeader: React.FC<{ navigationItems: JSX.Element[] }> = ({
 }) => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   return (
-    <header className="flex justify-between p-6 w-full fixed top-0 bg-navy ">
+    <header className="flex justify-between p-6 w-full fixed top-0 bg-navy z-50">
       <div className="z-10"></div>
       <div
         className="w-8 h-8 z-10 cursor-pointer bg-slate-400/20 flex-center"
