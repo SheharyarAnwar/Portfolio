@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 
 interface ITendrils {
   friction: number;
@@ -55,15 +55,15 @@ const Index: React.FC<Props> = ({
       window.removeEventListener("resize", updateCanvasDimensions);
     };
   }, []);
-  const updateCanvasDimensions = () => {
+  const updateCanvasDimensions = useCallback(() => {
     if (ref.current) {
       const x = ref.current.parentElement;
       setHeight(window.innerHeight);
       setWidth(parseInt(window.getComputedStyle(x!).width));
       // setWidth(document.body.clientWidth);
     }
-  };
-  const handleMouseMove = (ev: any) => {
+  }, []);
+  const handleMouseMove = useCallback((ev: any) => {
     if (ref.current) {
       let x, y;
 
@@ -79,8 +79,8 @@ const Index: React.FC<Props> = ({
       setMouseY(y);
       // setCursorPosition({ x, y });
     }
-  };
-  const reset = () => {
+  }, []);
+  const reset = useCallback(() => {
     for (var i = 0; i < trails; i++) {
       let tendril = new Tendril({
         spring: 0.45 + 0.025 * (i / trails),
@@ -91,7 +91,7 @@ const Index: React.FC<Props> = ({
       });
       tendrilRef.current.push(tendril);
     }
-  };
+  }, []);
   const animate = (time: number) => {
     if (previousTimeRef.current && ref.current) {
       const ctx = ref.current.getContext("2d");
