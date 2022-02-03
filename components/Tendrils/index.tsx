@@ -1,4 +1,10 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, {
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from "react";
 import { useInView } from "react-intersection-observer";
 import throttle from "lodash.throttle";
 interface ITendrils {
@@ -102,7 +108,6 @@ const Index: React.FC<Props> = ({
     //@ts-ignore
     return () => cancelAnimationFrame(requestRef.current);
   }, []);
-
   useEffect(() => {
     //@ts-ignore
     cancelAnimationFrame(requestRef.current);
@@ -111,18 +116,18 @@ const Index: React.FC<Props> = ({
       //@ts-ignore
       requestRef.current = requestAnimationFrame(animate);
     }
-  }, [ref, inView]);
+  }, [inView]);
   useEffect(() => {
+    updateCanvasDimensions();
     const parent = ref?.current?.parentElement;
     parent?.addEventListener("mousemove", handleMouseMove);
-    updateCanvasDimensions();
 
     window.addEventListener("resize", updateCanvasDimensions);
     return () => {
       parent?.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("resize", updateCanvasDimensions);
     };
-  }, []);
+  }, [ref.current]);
   const setRefs = useCallback(
     (node) => {
       ref.current = node;
@@ -130,6 +135,7 @@ const Index: React.FC<Props> = ({
     },
     [inViewRef]
   );
+
   const updateCanvasDimensions = useCallback(() => {
     if (ref.current) {
       const x = ref.current.parentElement;

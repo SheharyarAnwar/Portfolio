@@ -15,7 +15,7 @@ import Section from "../layouts/Section";
 const introHeading = ["Hi", "I'm Sherry,", "web developer"];
 const Home: NextPage = () => {
   const { queryBreakpoints } = useBreakpoints();
-  const canvasContainerRef = useRef(null);
+
   let radius = 400 / 1.5;
   if (queryBreakpoints("lg")) {
     radius = 300 / 1.5;
@@ -34,10 +34,7 @@ const Home: NextPage = () => {
 
       <Container>
         <Tendrils options={{}} />
-        <section
-          ref={canvasContainerRef}
-          className="relative h-screen flex items-center"
-        >
+        <section className="relative h-screen flex items-center">
           <div className="inline-block text-left">
             {introHeading.map((val, i) => {
               return (

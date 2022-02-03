@@ -1,21 +1,28 @@
 import React, { useState } from "react";
 import { useBreakpoints } from "../../hooks";
 import { CloseIcon, Hamburger, Logo } from "../../public/assets/icons";
-
+import Link from "next/link";
+import { useRouter } from "next/router";
 export interface Props {}
 const Index: React.FC<Props> = () => {
   const { queryBreakpoints } = useBreakpoints();
+  const router = useRouter();
   const navigationItems = ["About", "Work", "Blog", "Snippets", "Contact"].map(
     (val, i) => {
+      const href = `/${val.toLowerCase()}`;
+      const isActive = router.asPath === href;
       return (
-        <div
-          key={i}
-          className="py-3 w-full cursor-pointer border-b-2 border-solid border-grey-light "
-        >
-          <p className="text-center hover:text-green  font-medium text-grey">
-            {val}
-          </p>
-        </div>
+        <Link key={i} href={href}>
+          <a className="py-3 w-full cursor-pointer border-b-2 border-solid border-grey-light ">
+            <p
+              className={`text-center hover:text-green font-medium  ${
+                !isActive ? "text-grey" : "text-green"
+              }`}
+            >
+              {val}
+            </p>
+          </a>
+        </Link>
       );
     }
   );
@@ -29,7 +36,11 @@ const Index: React.FC<Props> = () => {
         <header className=" md:flex justify-center w-28 bg-navy-accent h-screen fixed top-0 z-50 ">
           <div className=" w-full flex mx-auto flex-col justify-between">
             <div className="flex-center h-80">
-              <Logo width={70} />
+              <Link href="/">
+                <a>
+                  <Logo width={70} className="cursor-pointer" />
+                </a>
+              </Link>
             </div>
             <nav className="flex-center flex-row md:flex-col">
               {navigationItems}
@@ -64,7 +75,11 @@ const MobileHeader: React.FC<{ navigationItems: JSX.Element[] }> = ({
         <div className="absolute w-full bg-navy left-0 top-0 h-screen flex">
           <div className="h-4/5 flex flex-col m-auto">
             <div className="flex-center mb-8">
-              <Logo width={70} />
+              <Link href="/">
+                <a>
+                  <Logo width={70} className="cursor-pointer" />
+                </a>
+              </Link>
             </div>
             {navigationItems}
           </div>
