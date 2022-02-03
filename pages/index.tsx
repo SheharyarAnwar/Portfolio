@@ -38,7 +38,7 @@ const Home: NextPage = () => {
           ref={canvasContainerRef}
           className="relative h-screen flex items-center"
         >
-          <div className="inline-block ">
+          <div className="inline-block text-left">
             {introHeading.map((val, i) => {
               return (
                 <ElasticAnimatableText
@@ -67,11 +67,7 @@ const Home: NextPage = () => {
             fugiat. Modi cupiditate, consectetur quasi natus est fugit amet
             voluptate blanditiis.
           </p>
-          {queryBreakpoints("xs") ? (
-            <Globe radius={radius} />
-          ) : (
-            <Globe radius={radius} />
-          )}
+          {<Globe radius={radius} />}
         </Section>
         <Section title="My Projects">
           <ProjectCard />
@@ -100,19 +96,3 @@ const Home: NextPage = () => {
 };
 
 export default Home;
-{
-  /* <div className="grid grid-cols-12 gap-10">
-            <div className="col-span-12 lg:col-span-6 py-16 ">
-              <p>
-                I’m interested in freelance opportunities – especially ambitious
-                or large projects. However, if you have other request or
-                question, don’t hesitate to use the form.
-              </p>
-            </div>
-            <div className="col-span-12 lg:col-span-6 py-16 ">
-              <div className="bg-green w-full h-full ">
-                <div className="w-8 h-8">Map</div>
-              </div>
-            </div>
-          </div> */
-}

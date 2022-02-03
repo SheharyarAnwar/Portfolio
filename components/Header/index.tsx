@@ -5,7 +5,7 @@ import { CloseIcon, Hamburger, Logo } from "../../public/assets/icons";
 export interface Props {}
 const Index: React.FC<Props> = () => {
   const { queryBreakpoints } = useBreakpoints();
-  const navigationItems = ["About", "Skills", "Work", "Blog", "Contact"].map(
+  const navigationItems = ["About", "Work", "Blog", "Snippets", "Contact"].map(
     (val, i) => {
       return (
         <div
@@ -26,7 +26,7 @@ const Index: React.FC<Props> = () => {
       {queryBreakpoints("lg") ? (
         <MobileHeader navigationItems={navigationItems} />
       ) : (
-        <header className=" md:flex justify-center w-40 bg-navy-accent h-screen fixed top-0 z-50 ">
+        <header className=" md:flex justify-center w-28 bg-navy-accent h-screen fixed top-0 z-50 ">
           <div className=" w-full flex mx-auto flex-col justify-between">
             <div className="flex-center h-80">
               <Logo width={70} />

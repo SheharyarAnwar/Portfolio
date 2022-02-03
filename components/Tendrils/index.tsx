@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { useInView } from "react-intersection-observer";
-
+import throttle from "lodash.throttle";
 interface ITendrils {
   friction: number;
   trails: number;
@@ -138,20 +138,27 @@ const Index: React.FC<Props> = ({
       // setWidth(document.body.clientWidth);
     }
   }, []);
-  const handleMouseMove = useCallback((ev: any) => {
-    if (ref.current) {
-      let x, y;
+  const handleMouseMove = useCallback(
+    throttle(
+      (ev: any) => {
+        if (ref.current) {
+          let x, y;
 
-      if (ev.touches) {
-        x = ev.touches[0].pageX;
-        y = ev.touches[0].pageY;
-      } else {
-        x = ev.clientX;
-        y = ev.clientY;
-      }
-      mouseRef.current = { x, y };
-    }
-  }, []);
+          if (ev.touches) {
+            x = ev.touches[0].pageX;
+            y = ev.touches[0].pageY;
+          } else {
+            x = ev.clientX;
+            y = ev.clientY;
+          }
+          mouseRef.current = { x, y };
+        }
+      },
+      1000 / 60,
+      {}
+    ),
+    []
+  );
   const reset = useCallback(() => {
     for (var i = 0; i < trails; i++) {
       let tendril = new Tendril({
