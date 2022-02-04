@@ -24,13 +24,23 @@
   }
 
   h3 {
-    @apply text-xl xs:text-2xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold;
+    @apply text-2xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold;
 
     transition: all 0.3s ease-out;
   }
 
   h4 {
-    @apply text-xl lg:text-2xl font-bold;
+    @apply text-xl lg:text-2xl font-semibold;
+
+    transition: all 0.3s ease-out;
+  }
+  h5 {
+    @apply text-lg lg:text-xl font-medium;
+
+    transition: all 0.3s ease-out;
+  }
+  h6 {
+    @apply text-base font-medium;
 
     transition: all 0.3s ease-out;
   }

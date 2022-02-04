@@ -4,13 +4,15 @@ interface Props {}
 const Index: React.FC<Props> = () => {
   return (
     <>
-      <div className="p-12 mb-12 rounded-lg bg-navy-accent">
+      <div className="group p-12 transition-colors mb-12 rounded-xl cursor-pointer bg-navy-accent">
         <Tag>Productivity</Tag>
-
-        <h4 className="my-8">Increase your productivity with VSCode</h4>
-        <p>
+        <h4 className="mt-8 group-hover:text-green">
+          Increase your productivity with VSCode
+        </h4>
+        <p className="my-8">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem sed
         </p>
+        <p className=" font-bold ">Read More</p>
       </div>
     </>
   );

@@ -3,8 +3,10 @@ import { useBreakpoints } from "../../hooks";
 import { CloseIcon, Hamburger, Logo } from "../../public/assets/icons";
 import Link from "next/link";
 import { useRouter } from "next/router";
-export interface Props {}
-const Index: React.FC<Props> = () => {
+export interface Props {
+  isBlog?: boolean;
+}
+const Index: React.FC<Props> = ({ isBlog = false }) => {
   const { queryBreakpoints } = useBreakpoints();
   const router = useRouter();
   const navigationItems = ["About", "Work", "Blog", "Snippets", "Contact"].map(
@@ -26,31 +28,34 @@ const Index: React.FC<Props> = () => {
       );
     }
   );
-  // console.log(queryBreakpoints("lg"));
-
-  return (
-    <>
-      {queryBreakpoints("lg") ? (
-        <MobileHeader navigationItems={navigationItems} />
-      ) : (
-        <header className=" md:flex justify-center w-28 bg-navy-accent h-screen fixed top-0 z-50 ">
-          <div className=" w-full flex mx-auto flex-col justify-between">
-            <div className="flex-center h-80">
-              <Link href="/">
-                <a>
-                  <Logo width={70} className="cursor-pointer" />
-                </a>
-              </Link>
+  let renderedHeader = <MobileHeader navigationItems={navigationItems} />;
+  if (!isBlog) {
+    renderedHeader = (
+      <>
+        {queryBreakpoints("lg") ? (
+          <MobileHeader navigationItems={navigationItems} />
+        ) : (
+          <header className=" md:flex justify-center w-28 bg-navy-accent h-screen fixed top-0 z-50 ">
+            <div className=" w-full flex mx-auto flex-col justify-between">
+              <div className="flex-center h-80">
+                <Link href="/">
+                  <a>
+                    <Logo width={70} className="cursor-pointer" />
+                  </a>
+                </Link>
+              </div>
+              <nav className="flex-center flex-row md:flex-col">
+                {navigationItems}
+              </nav>
+              <div className="h-80"></div>
             </div>
-            <nav className="flex-center flex-row md:flex-col">
-              {navigationItems}
-            </nav>
-            <div className="h-80"></div>
-          </div>
-        </header>
-      )}
-    </>
-  );
+          </header>
+        )}
+      </>
+    );
+  }
+
+  return <>{renderedHeader}</>;
 };
 export default Index;
 
