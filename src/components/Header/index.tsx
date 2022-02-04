@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useBreakpoints } from "../../hooks";
-import { CloseIcon, Hamburger, Logo } from "../../public/assets/icons";
+import { CloseIcon, Hamburger, Logo } from "../../../public/assets/icons";
 import Link from "next/link";
 import { useRouter } from "next/router";
 export interface Props {

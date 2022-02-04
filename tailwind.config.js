@@ -1,6 +1,6 @@
 const defaultTheme = require("tailwindcss/defaultTheme");
 module.exports = {
-  content: ["./pages/**/*.tsx", "./components/**/*.tsx", "./layouts/**/*.tsx"],
+  content: ["./src/**/*.tsx"],
   theme: {
     screens: {
       xs: "480px",
@@ -9,7 +9,6 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ["Raleway", ...defaultTheme.fontFamily.sans],
-        // body: ["Nunito", ...defaultTheme.fontFamily.sans],
       },
       colors: {
         navy: "#1d1d1d",
@@ -24,21 +23,43 @@ module.exports = {
       // typography: (theme) => ({
       //   DEFAULT: {
       //     css: {
-      //       color: theme("colors.gray.700"),
+      //       color: theme("colors.white"),
       //       a: {
-      //         color: theme("colors.blue.500"),
+      //         color: theme("colors.green"),
       //         "&:hover": {
-      //           color: theme("colors.blue.700"),
+      //           color: theme("colors.blue.600"),
       //         },
-      //         code: { color: theme("colors.blue.400") },
       //       },
-
+      //       code: { color: theme("colors.pink") },
+      //       blockquote: {
+      //         borderLeftColor: theme("colors.gray.700"),
+      //         color: theme("colors.gray.300"),
+      //       },
+      //       "h1,h2,h3,h4,h5,h6": {
+      //         color: theme("colors.green"),
+      //         "scroll-margin-top": defaultTheme.spacing[32],
+      //       },
+      //       hr: { borderColor: theme("colors.gray.700") },
+      //       ol: {
+      //         li: {
+      //           "&:before": { color: theme("colors.gray.500") },
+      //         },
+      //       },
+      //       ul: {
+      //         li: {
+      //           "&:before": { backgroundColor: theme("colors.gray.500") },
+      //         },
+      //       },
+      //       strong: { color: theme("colors.gray.100") },
       //       thead: {
-      //         borderBottomColor: theme("colors.gray.200"),
+      //         color: theme("colors.gray.100"),
+      //         borderBottomColor: theme("colors.gray.600"),
       //       },
-      //       code: { color: theme("colors.pink.500") },
-      //       "blockquote p:first-of-type::before": false,
-      //       "blockquote p:last-of-type::after": false,
+      //       tbody: {
+      //         tr: {
+      //           borderBottomColor: theme("colors.gray.700"),
+      //         },
+      //       },
       //     },
       //   },
       // }),

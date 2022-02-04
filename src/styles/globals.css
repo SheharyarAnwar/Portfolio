@@ -2,10 +2,11 @@
 
 @tailwind base;
 @tailwind utilities;
+@tailwind components;
 
 @layer base {
   @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800&display=swap");
-  @import url("https://fonts.googleapis.com/css2?family=Cabin&display=swap");
+  /* @import url("https://fonts.googleapis.com/css2?family=Cabin&display=swap"); */
 
   body {
     @apply text-center xs:text-left text-white bg-navy;

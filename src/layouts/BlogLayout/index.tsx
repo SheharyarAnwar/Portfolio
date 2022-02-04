@@ -5,9 +5,8 @@ const Index: React.FC<Props> = ({ children }) => {
   return (
     <>
       <Header isBlog />
-      <div className=" w-3/5 m-auto pt-24">
-        <article className="prose ">{children}</article>
-      </div>
+
+      <article className="prose prose-stone m-auto pt-24">{children}</article>
     </>
   );
 };

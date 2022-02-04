@@ -1,24 +1,24 @@
-## Increase you productivity by using VS Code Snippets
+Have you ever wondered what life would be like if you could automate brushing teeth?
 
-An average human spends more than 82 days brushing their teeth in their lifetime. That’s 4-5 minutes that you could have spent lazing in your bed daily if you could automate it.
+Because I did, and that’s 4-5 minutes that I could have spent lazing in my bed daily.
 
-Alas, we have not automated it as of yet...
+Alas, we have not automated it yet...
 
-But what we can automate is the writing repeating patterns in our code with VS Code snippets. Let’s see what I am talking about with an example.
+But what we can automate is, writing repeating patterns in our code with VS Code snippets. Let’s see what I am talking about with an example.
 
-Before I knew about the snippets, I used to write the boilerplate code of each React component from scratch in every file. I didn’t do it for fun, I did it because I didn’t know any better.
+Before I knew about the snippets, I used to write the boilerplate code of each React component from scratch in every file. I didn’t do it for fun, I did it because I didn’t know any better way of doing it.
 
-Let’s turn over a new leaf by creating a snippet that generates the boilerplate code for a React component. What we hope to achieve is shown below:
+Let’s turn over a new leaf by creating a snippet that generates the boilerplate code for a React component. What we wish to achieve is the following:
 
-![snippet.gif](Increase%20you%20productivity%20by%20using%20VS%20Code%20Snippet%2082f252221c6444b88474f27ee44ab10a/snippet.gif)
+![snippet.gif](https://cdn.hashnode.com/res/hashnode/image/upload/v1641828833935/tQwACkEYj.gif)
 
 ### **Here is how to do it step by step:**
 
 1- On the top left of your VS Code window click on **File** (**Code** on macOS). Then click on **Preferences** and select **User Snippets**.
 
-2- After you click on the **User Snippets** you will be prompted to select a language you are writing this snippet for. Choosing **JavaScript React** will open a file named **`javascriptreact.json`**. This file will contain all the snippets that will be available to us in a JSX file.
+2- After you click on the **User Snippets,** you will be prompted to select the language you are writing this snippet for. Choosing **JavaScript React** will open a file named **`javascriptreact.json`**. This file will contain all the snippets that will be available to us in a JSX file.
 
-![Screenshot (49).png](<Increase%20you%20productivity%20by%20using%20VS%20Code%20Snippet%2082f252221c6444b88474f27ee44ab10a/Screenshot_(49).png>)
+![Screenshot_(49).png](https://cdn.hashnode.com/res/hashnode/image/upload/v1641828824604/CDNzFOUqN.png)
 
 3- Paste the following in `javascriptreact.json` file and hit save.
 
@@ -40,7 +40,7 @@ Let’s turn over a new leaf by creating a snippet that generates the boilerplat
 }
 ```
 
-Now, you can see this snippet in the IntelliSense whenever you type this the prefix `rfc` and use it in any JSX file to create the boilerplate for the React component.
+Now, you can see this snippet in the IntelliSense whenever you type the prefix `rfc` and use it in any JSX file to create the boilerplate for the React component.
 
 If you still can’t see the snippet, then it might be because of the VS Code editor settings that prevent you from seeing snippet suggestions.
 
@@ -52,13 +52,15 @@ This file has an object with a key-value pair that represents a single snippet. 
 
 We can create as many of these key-value pairs/snippets as we want in this file, given that they follow the above-mentioned schema.
 
-The `prefix` property represents one or more words, by typing which, we can see the snippet in the IntelliSense. The value of the prefix property can be a string containing the trigger word or an array containing multiple trigger words.
+The `prefix` property has one or more words, by typing which, we can see the snippet in the IntelliSense. The value of the prefix property can be a string containing the trigger word or an array containing multiple trigger words.
 
-The `body` property has the actual code that will be written by the snippet. Each element in the array represents a single line of code. The `\t` you see in the above code is an escape sequence to insert tabs for better formatting of the code. You can also write all the code in a single string and add new lines by using `\n` escape sequence but I prefer the array approach because of the readability factor.
+The `body` property has the actual code that will be written by the snippet. Each element in the array represents a single line of code. The `\t` you see in the above code is an escape sequence to insert tabs for better formatting of the code. You can also write all the code in a single string and add new lines by using `\n` escape sequence but I prefer the array approach because it’s more readable.
 
 `description` is an optional property that displays the description of the snippet in the IntelliSense.
 
-![Screenshot-(52).png](<Increase%20you%20productivity%20by%20using%20VS%20Code%20Snippet%2082f252221c6444b88474f27ee44ab10a/Screenshot-(52).png>)
+![Screenshot-(52).png](https://cdn.hashnode.com/res/hashnode/image/upload/v1641828816917/cXZZlfA8p.png)
+
+### Variables
 
 This is not all we can do with snippets. As you can see, I have hard-coded the name of the component as `Index`. Some people prefer to use the file name as the name of their React component. It would be a nuisance to change the name of the component every time you create it through a snippet.
 
@@ -68,8 +70,38 @@ Now, whenever we use this snippet, the component name will be replaced with the 
 
 **Note: We can use these variables only in the body of the snippet**
 
-![variables (1).gif](<Increase%20you%20productivity%20by%20using%20VS%20Code%20Snippet%2082f252221c6444b88474f27ee44ab10a/variables_(1).gif>)
+![variables_(1).gif](https://cdn.hashnode.com/res/hashnode/image/upload/v1641828841129/R64NbdS7k.gif)
 
 You can find out more about these variables and what we can do with them [here](https://code.visualstudio.com/docs/editor/userdefinedsnippets#_variables).
 
-Another important concept that you should be aware of, to get the most out of the snippets is that of the placeholders.
+### Placeholders
+
+Another important concept that you should be aware of to get the most out of the snippets is that of the placeholders.
+
+As the name says, a placeholder is a piece of temporary information that shows up in the code generated by the snippets, that needs to be replaced by something meaningful later on.
+
+Let’s create another snippet to see the placeholders in action. This time we will create a snippet that lets us generate the code for a `console.log` statement. I use it more than I would like to admit because of which it is a perfect candidate to be made into a snippet.
+
+```json
+"Console Log Statement":{
+		"prefix":"cl",
+		"body": [
+			"console.log( \"${1:label}\" , ${2:variable} )",
+		  ],
+		  "description": "Prints to the console"
+	}
+```
+
+![placeholder.gif](https://cdn.hashnode.com/res/hashnode/image/upload/v1641828806947/5ekkNAGYK.gif)
+
+As you can see in the code above I have created two placeholders `${1:label}` and `${2:variable}`
+
+The numbers in these placeholders represent the traversal order of the placeholders, starting from one. This is important because when you press `Tab` you can shift focus from one placeholder to another and this number decides which placeholder to focus on next.
+
+### Resources
+
+This article covers pretty much all the basics that you need to know to get started with creating your own snippets. If you want to dive deeper, the official [VS Code documentation](https://code.visualstudio.com/docs/editor/userdefinedsnippets) for user-generated snippets has you covered.
+
+If you don’t have very specific needs then, you can find some general-purpose ready-to-use snippets provided to you by VS code extensions. You can browse through those extensions [here](https://marketplace.visualstudio.com/search?target=VSCode&category=Snippets&sortBy=Installs).
+
+[Snippet Generator](https://snippet-generator.app/) is a very handy tool that you can use to generate your snippets quickly. You just need to paste your code and a snippet for that is automatically generated.
