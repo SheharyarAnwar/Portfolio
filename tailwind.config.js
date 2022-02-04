@@ -1,6 +1,10 @@
 const defaultTheme = require("tailwindcss/defaultTheme");
 module.exports = {
-  content: ["./src/**/*.tsx"],
+  content: [
+    "./src/components/**/*.tsx",
+    "./src/pages/**/*.tsx",
+    "./src/layouts/**/*.tsx",
+  ],
   theme: {
     screens: {
       xs: "480px",
@@ -65,5 +69,8 @@ module.exports = {
       // }),
     },
   },
-  plugins: [require("@tailwindcss/typography")],
+  plugins: [
+    require("@tailwindcss/typography"),
+    require("@tailwindcss/line-clamp"),
+  ],
 };

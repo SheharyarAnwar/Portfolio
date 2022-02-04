@@ -18,7 +18,7 @@ const Index: React.FC<Props> = ({ isBlog = false }) => {
           <a className="py-3 w-full cursor-pointer border-b-2 border-solid border-grey-light ">
             <p
               className={`text-center hover:text-green font-medium  ${
-                !isActive ? "text-grey" : "text-green"
+                !isActive ? "text-white" : "text-green"
               }`}
             >
               {val}

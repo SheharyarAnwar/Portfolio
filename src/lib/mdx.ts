@@ -49,7 +49,9 @@ export async function getFileBySlug(type: string, slug?: string) {
   };
 }
 
-export async function getAllFilesFrontMatter(type: string) {
+export async function getAllFilesFrontMatter(
+  type: string
+): Promise<GreyMatter> {
   const files = readdirSync(join(process.cwd(), "data", type));
 
   return files.reduce((allPosts: any, postSlug) => {
@@ -67,4 +69,11 @@ export async function getAllFilesFrontMatter(type: string) {
       ...allPosts,
     ];
   }, []);
+}
+export interface GreyMatter {
+  title: string;
+  publishDate: string;
+  summary: string;
+  category: string;
+  slug: string;
 }
