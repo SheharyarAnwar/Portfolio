@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import {
   ElasticAnimatableText,
   Button,
@@ -12,8 +12,10 @@ import {
 } from "../components";
 import { useBreakpoints } from "../hooks";
 import Section from "../layouts/Section";
-const introHeading = ["Hi", "I'm Sherry,", "web developer"];
-const Home: NextPage = () => {
+import { getAllFilesFrontMatter, GreyMatter } from "../lib/mdx";
+
+const Home: NextPage<{ posts: GreyMatter[] }> = ({ posts }) => {
+  const introHeading = ["Hi", "I'm Sherry,", "web developer"];
   const { queryBreakpoints } = useBreakpoints();
 
   let radius = 400 / 1.5;
@@ -23,6 +25,14 @@ const Home: NextPage = () => {
   if (queryBreakpoints("xs")) {
     radius = 190 / 1.5;
   }
+  const filterRecentPosts = useMemo(() => {
+    return posts
+      .sort(
+        (a, b) =>
+          Number(new Date(a.publishDate)) - Number(new Date(b.publishDate))
+      )
+      .slice(0, 2);
+  }, []);
 
   return (
     <>
@@ -74,8 +84,11 @@ const Home: NextPage = () => {
         </Section>
         <Section title="Blog Posts">
           <div className="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-4 gap-10 py-16">
-            <BlogCard></BlogCard>
-            <BlogCard></BlogCard>
+            {filterRecentPosts.map((val, i) => {
+              return <BlogCard key={i} {...val} />;
+            })}
+            {/* <BlogCard></BlogCard>
+            <BlogCard></BlogCard> */}
           </div>
           <Button className="m-auto">See More</Button>
         </Section>
@@ -93,3 +106,9 @@ const Home: NextPage = () => {
 };
 
 export default Home;
+
+export async function getStaticProps() {
+  const post = await getAllFilesFrontMatter("blog");
+
+  return { props: { posts: post } };
+}
