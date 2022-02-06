@@ -9,7 +9,7 @@
   /* @import url("https://fonts.googleapis.com/css2?family=Cabin&display=swap"); */
 
   body {
-    @apply text-center xs:text-left text-white bg-navy;
+    @apply text-center xs:text-left text-white;
   }
 
   h1 {
