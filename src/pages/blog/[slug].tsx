@@ -3,12 +3,12 @@ import { getFileBySlug, getFiles } from "../../lib/mdx";
 import { getMDXComponent } from "mdx-bundler/client";
 import BlogLayout from "../../layouts/BlogLayout";
 interface Props {}
-const Index: React.FC<any> = ({ code, frontmatter }) => {
+const Index: React.FC<any> = ({ code, frontMatter }) => {
   const Component = useMemo(() => getMDXComponent(code), [code]);
-
+  console.log(frontMatter);
   return (
     <>
-      <BlogLayout>
+      <BlogLayout frontMatter={frontMatter}>
         <Component />
       </BlogLayout>
     </>

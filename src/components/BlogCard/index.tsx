@@ -72,6 +72,7 @@ const Arrow = ({ activate }: { activate: boolean }) => {
           .map((val, i) => {
             return (
               <div
+                key={i}
                 className={`w-3 opacity-0 transition-all aspect-square border-t-2 border-r-2 border-solid border-white group-hover:border-green rotate-45 `}
               ></div>
             );
