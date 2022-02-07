@@ -1,6 +1,6 @@
 import React from "react";
 
-import Header from "../../components/Header";
+import { HeaderV2 } from "../../components";
 interface Props {
   /**
    * Give classnames to the wrapper component of container children
@@ -14,11 +14,11 @@ interface Props {
 const Index: React.FC<Props> = ({ children, className }) => {
   return (
     <>
-      <div className="flex">
-        {/* Space for sticky positioned header */}
-        <Header />
+      <div className="flex flex-col">
+        {/* <Header /> */}
+        <HeaderV2 />
         <div
-          className={`px-6 text-center xs:text-left sm:px-12 md:px-24 lg:pr-20 lg:pl-48 2xl:pr-24 2xl:pl-52 bg-primary ${className}`}
+          className={`px-6 text-center xs:text-left sm:px-12 md:px-24 bg-primary ${className}`}
         >
           {children}
         </div>

@@ -1,5 +1,6 @@
 import React, { useMemo, useState } from "react";
-import { BlogCard, Container, Tag } from "../components";
+import { BlogCard, Tag } from "../components";
+import { Container } from "../layouts";
 import { getAllFilesFrontMatter, GreyMatter } from "../lib/mdx";
 interface Props {
   posts: Array<GreyMatter>;

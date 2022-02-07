@@ -1,17 +1,16 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useMemo } from "react";
 import {
   ElasticAnimatableText,
   Button,
-  Container,
   ProjectCard,
   BlogCard,
   Globe,
   Tendrils,
 } from "../components";
 import { useBreakpoints } from "../hooks";
-import Section from "../layouts/Section";
+import { Section, Container } from "../layouts";
 import { getAllFilesFrontMatter, GreyMatter } from "../lib/mdx";
 
 const Home: NextPage<{ posts: GreyMatter[] }> = ({ posts }) => {
@@ -44,7 +43,7 @@ const Home: NextPage<{ posts: GreyMatter[] }> = ({ posts }) => {
 
       <Container>
         <Tendrils options={{}} />
-        <section className="relative h-screen flex items-center">
+        <section className="relative h-[calc(100vh-6rem)] mt-24 flex items-center">
           <div className="inline-block text-left">
             {introHeading.map((val, i) => {
               return (

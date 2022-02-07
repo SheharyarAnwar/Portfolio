@@ -1,7 +1,7 @@
 import React, { useMemo } from "react";
 import { getFileBySlug, getFiles } from "../../lib/mdx";
 import { getMDXComponent } from "mdx-bundler/client";
-import BlogLayout from "../../layouts/BlogLayout";
+import { BlogLayout } from "../../layouts";
 interface Props {}
 const Index: React.FC<any> = ({ code, frontMatter }) => {
   const Component = useMemo(() => getMDXComponent(code), [code]);

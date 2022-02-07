@@ -1,5 +1,4 @@
 export { default as Header } from "./Header";
-export { default as Container } from "../layouts/Container";
 export { default as Button } from "./Button";
 export { default as ElasticAnimatableText } from "./ElasticAnimatableText";
 export { default as ProjectCard } from "./ProjectCard";
@@ -7,3 +6,4 @@ export { default as BlogCard } from "./BlogCard";
 export { default as Tag } from "./Tag";
 export { default as Globe } from "./Globe";
 export { default as Tendrils } from "./Tendrils";
+export { default as HeaderV2 } from "./HeaderV2";
