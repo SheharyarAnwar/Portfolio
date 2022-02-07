@@ -15,7 +15,7 @@ const Index: React.FC<Props> = ({ isBlog = false }) => {
       const isActive = router.asPath === href;
       return (
         <Link key={i} href={href}>
-          <a className="py-3 w-full cursor-pointer border-b-2 border-solid border-grey-light ">
+          <a className="py-3 w-full cursor-pointer border-b-2 border-solid border-primary ">
             <p
               className={`text-center hover:text-green font-medium  ${
                 !isActive ? "text-grey" : "text-green"

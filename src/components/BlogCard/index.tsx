@@ -27,7 +27,7 @@ const Index: React.FC<Props> = ({ category, title, summary, slug }) => {
             </p>
             <Arrow activate={onReadMore}></Arrow>
           </div>
-          <div className="group-hover:opacity-100 pointer-events-none group-hover:scale-105 transition-all absolute top-0 left-0 w-full h-full opacity-0 rounded-xl outline outline-2 outline-green"></div>
+          <div className=" group-hover:opacity-100 pointer-events-none group-hover:scale-100 scale-90 transition-all absolute top-0 left-0 w-full h-full opacity-0 rounded-xl outline outline-2 outline-green  border-solid border-primary border-8"></div>
         </div>
       </a>
     </Link>
