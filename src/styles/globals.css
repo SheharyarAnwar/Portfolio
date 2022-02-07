@@ -13,7 +13,7 @@
   }
 
   h1 {
-    @apply text-4xl xs:text-5xl sm:text-5xl md:text-6xl lg:text-[5.7rem] leading-[1.1] font-bold;
+    @apply text-4xl xs:text-5xl sm:text-5xl md:text-6xl lg:text-[5rem] 2xl:text-[6rem] leading-[1.1] font-bold;
 
     transition: all 0.3s ease-out;
   }
@@ -224,6 +224,9 @@
 }
 
 @layer utilities {
+  .hover-border {
+    @apply before:content-[''] before:hover:opacity-100 before:hover:scale-100 before:pointer-events-none  before:scale-95 before:transition-all before:absolute before:top-1/2 before:left-1/2 before:-translate-x-1/2 before:-translate-y-1/2 before:w-[calc(100%+1rem)] before:h-[calc(100%+1rem)] before:opacity-0 before:rounded-xl before:outline before:outline-2 before:outline-green border-8 border-solid border-primary;
+  }
   .flex-center {
     @apply flex justify-center items-center;
   }

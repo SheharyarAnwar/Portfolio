@@ -43,8 +43,8 @@ const Home: NextPage<{ posts: GreyMatter[] }> = ({ posts }) => {
 
       <Container>
         <Tendrils options={{}} />
-        <section className="relative h-[calc(100vh-6rem)] mt-24 flex items-center">
-          <div className="inline-block text-left">
+        <section className="relative h-[calc(100vh-8rem)]  flex items-center">
+          <div className="inline-block text-left pb-8">
             {introHeading.map((val, i) => {
               return (
                 <ElasticAnimatableText
@@ -62,18 +62,21 @@ const Home: NextPage<{ posts: GreyMatter[] }> = ({ posts }) => {
               <p className="tracking-widest text-grey">
                 Full Stack Developer / React Expert
               </p>
-              <Button className=" mt-16">Contact Me</Button>
+              <Button className=" mt-10">Contact Me</Button>
             </div>
           </div>
         </section>
         <Section title="About Me">
-          <p className=" pt-16 pb-8">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime ab
-            vero corrupti quam soluta cupiditate deleniti. Sapiente quae dolore
-            fugiat. Modi cupiditate, consectetur quasi natus est fugit amet
-            voluptate blanditiis.
-          </p>
-          {<Globe radius={radius} />}
+          <div className="grid grid-cols-12">
+            <p className=" pt-16 pb-8 col-span-12 xl:col-span-6">
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime
+              ab vero corrupti quam soluta cupiditate deleniti. Sapiente quae
+              dolore fugiat.
+            </p>
+            <div className="flex items-center justify-center xl:justify-end col-span-12 xl:col-span-6">
+              <div>{<Globe radius={radius} />}</div>
+            </div>
+          </div>
         </Section>
         <Section title="My Projects">
           <ProjectCard />

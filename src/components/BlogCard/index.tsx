@@ -13,7 +13,7 @@ const Index: React.FC<Props> = ({ category, title, summary, slug }) => {
   return (
     <Link href={`blog/${encodeURIComponent(slug)}`}>
       <a>
-        <div className="group relative p-12 transition-all mb-12 rounded-xl cursor-pointer bg-secondry">
+        <div className="group hover-border relative p-12 transition-all mb-12 rounded-2xl cursor-pointer bg-secondry">
           <Tag>{category}</Tag>
           <h4 className="mt-8 group-hover:text-green text-white">{title}</h4>
           <p className="my-8 line-clamp-3 text-grey font-medium">{summary}</p>
@@ -27,7 +27,7 @@ const Index: React.FC<Props> = ({ category, title, summary, slug }) => {
             </p>
             <Arrow activate={onReadMore}></Arrow>
           </div>
-          <div className=" group-hover:opacity-100 pointer-events-none group-hover:scale-100 scale-95 transition-all absolute top-0 left-0 w-full h-full opacity-0 rounded-xl outline outline-2 outline-green  border-solid border-primary border-8"></div>
+          {/* <div className=" group-hover:opacity-100 pointer-events-none group-hover:scale-100 scale-95 transition-all absolute top-0 left-0 w-full h-full opacity-0 rounded-xl outline outline-2 outline-green  border-solid border-primary border-8"></div> */}
         </div>
       </a>
     </Link>
