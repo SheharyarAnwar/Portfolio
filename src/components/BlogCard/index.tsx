@@ -13,7 +13,7 @@ const Index: React.FC<Props> = ({ category, title, summary, slug }) => {
   return (
     <Link href={`blog/${encodeURIComponent(slug)}`}>
       <a>
-        <div className="group relative p-12 transition-all mb-12 rounded-xl cursor-pointer bg-navy-accent">
+        <div className="group relative p-12 transition-all mb-12 rounded-xl cursor-pointer bg-secondry">
           <Tag>{category}</Tag>
           <h4 className="mt-8 group-hover:text-green text-white">{title}</h4>
           <p className="my-8 line-clamp-3 text-grey font-medium">{summary}</p>

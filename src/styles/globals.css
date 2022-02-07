@@ -9,7 +9,7 @@
   /* @import url("https://fonts.googleapis.com/css2?family=Cabin&display=swap"); */
 
   body {
-    @apply text-white bg-navy;
+    @apply text-white bg-primary;
   }
 
   h1 {
@@ -104,7 +104,7 @@
   .token.prolog,
   .token.doctype,
   .token.cdata {
-    @apply text-gray-300;
+    @apply text-syntax-comment;
   }
 
   .token.punctuation {
@@ -112,22 +112,28 @@
   }
 
   .token.property,
-  .token.tag,
-  .token.boolean,
+  .token.tag {
+    @apply text-syntax-prop;
+  }
+  .token.boolean {
+    @apply text-syntax-bool;
+  }
   .token.number,
   .token.constant,
   .token.symbol,
   .token.deleted {
-    @apply text-aqua;
+    @apply text-syntax-del;
   }
 
   .token.selector,
-  .token.attr-name,
+  .token.attr-name {
+    @apply text-syntax-name;
+  }
   .token.string,
   .token.char,
   .token.builtin,
   .token.inserted {
-    @apply text-purple-500;
+    @apply text-syntax-str;
   }
 
   .token.operator,
@@ -146,18 +152,18 @@
 
   .token.function,
   .token.class-name {
-    @apply text-pink;
+    @apply text-syntax-fn;
   }
 
   .token.regex,
   .token.important,
   .token.variable {
-    @apply text-yellow-500;
+    @apply text-syntax-regex;
   }
 
   code[class*="language-"],
   pre[class*="language-"] {
-    @apply text-gray-50;
+    @apply text-gray-50 bg-syntax-bg;
   }
 
   pre::-webkit-scrollbar {
@@ -168,9 +174,12 @@
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
   }
+  .code-line {
+    @apply: border-0;
+  }
 
   .rehype-code-title {
-    @apply px-5 py-3 font-mono text-sm font-bold text-gray-800  border border-b-0 border-gray-200 rounded-t-lg text-gray-200border-gray-700 bg-gray-800;
+    @apply px-5 py-3 font-mono text-sm font-bold  border border-b-0 border-gray-200 rounded-t-lg text-gray-200  bg-gray-800;
   }
 
   .rehype-code-title + pre {

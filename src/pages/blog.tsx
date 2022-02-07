@@ -37,7 +37,7 @@ const Index: React.FC<Props> = ({ posts }) => {
             <h4 className="text-green">Categories</h4>
             <div className="my-8 lg:my-0 ">
               {categories.map((val, i) => {
-                const activeClass = "bg-green text-navy-accent";
+                const activeClass = "bg-green text-secondry";
                 return (
                   <span
                     className="inline-block"
@@ -48,7 +48,7 @@ const Index: React.FC<Props> = ({ posts }) => {
                       className={"cursor-pointer font-bold ".concat(
                         selectedCategory === val
                           ? activeClass
-                          : "hover:bg-green hover:text-navy-accent"
+                          : "hover:bg-green hover:text-secondry"
                       )}
                     >
                       {val}

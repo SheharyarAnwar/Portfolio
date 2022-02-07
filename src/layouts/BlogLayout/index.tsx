@@ -9,7 +9,7 @@ const Index: React.FC<Props> = ({ children, frontMatter }) => {
   return (
     <>
       <Header isBlog />
-      <article className="prose prose-base md:prose-lg bg-navy m-auto px-8 mt-16 mb-32">
+      <article className="prose prose-base md:prose-lg bg-primary m-auto px-8 mt-16 mb-32">
         <div className="py-16">
           <p className="text-green text-center">{frontMatter.category}</p>
           <h1 className="text-center leading-4">{frontMatter.title}</h1>

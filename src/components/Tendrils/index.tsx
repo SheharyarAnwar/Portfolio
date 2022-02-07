@@ -176,8 +176,8 @@ const Index: React.FC<Props> = ({
   const animate = (time: number) => {
     if (previousTimeRef.current && ref.current && mouseRef.current) {
       const ctx = ref.current.getContext("2d");
-      ctx!.globalCompositeOperation = "source-over";
-      ctx!.fillStyle = "#1D1D1D";
+      ctx!.globalCompositeOperation = "copy";
+      ctx!.fillStyle = "transparent";
       ctx!.fillRect(0, 0, ctx!.canvas.width, ctx!.canvas.height);
       ctx!.globalCompositeOperation = "lighter";
       ctx!.strokeStyle = "hsla(346,98%,56%,0.25)";

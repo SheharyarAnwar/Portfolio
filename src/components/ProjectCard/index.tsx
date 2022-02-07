@@ -27,7 +27,7 @@ const Index: React.FC<Props> = ({ reversed = false }) => {
           priority
         />
         {/* <div
-          className={`absolute w-full h-full top-0 left-0 bg-navy opacity-80 hover:opacity-0`}
+          className={`absolute w-full h-full top-0 left-0 bg-primary opacity-80 hover:opacity-0`}
         ></div> */}
       </div>
       <div
@@ -45,7 +45,7 @@ const Index: React.FC<Props> = ({ reversed = false }) => {
           </p>
           <h3 className="text-center lg:text-left">Templific</h3>
         </div>
-        <p className="p-8 lg:bg-navy-accent col-span-12 self-center">
+        <p className="p-8 lg:bg-secondry col-span-12 self-center">
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae
           illo magni reiciendis dicta dolore at officia aliquam blanditiis
           molestias,

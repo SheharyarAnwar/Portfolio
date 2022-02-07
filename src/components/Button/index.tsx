@@ -4,7 +4,7 @@ const Index: React.FC<Props> = ({ children, ...props }) => {
   return (
     <button
       {...props}
-      className={`overflow-hidden hover:text-navy-accent relative mt-8 mx-auto tracking-widest
+      className={`overflow-hidden hover:text-secondry relative mt-8 mx-auto tracking-widest
        px-16 py-4 outline-[1.5px] text-green outline outline-green 
 
        before:content[''] before:h-full before:w-full 
