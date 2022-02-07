@@ -38,7 +38,7 @@ export default Index;
 const Arrow = ({ activate }: { activate: boolean }) => {
   let head = 3;
   const ref = useRef<HTMLDivElement>(null);
-  console.log(activate);
+
   const playAnimation = (reversed?: boolean) => {
     const children = Array.from(ref.current!.children);
     children.forEach((val, i) => {

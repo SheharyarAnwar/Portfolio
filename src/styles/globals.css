@@ -8,15 +8,12 @@
   @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800&display=swap");
   /* @import url("https://fonts.googleapis.com/css2?family=Cabin&display=swap"); */
 
-  html {
-    font-size: 18px;
-  }
   body {
-    @apply text-center xs:text-left text-white bg-navy;
+    @apply text-white bg-navy;
   }
 
   h1 {
-    @apply text-4xl xs:text-5xl sm:text-5xl md:text-6xl lg:text-[5rem] leading-[1.1] font-bold;
+    @apply text-4xl xs:text-5xl sm:text-5xl md:text-6xl lg:text-[5.7rem] leading-[1.1] font-bold;
 
     transition: all 0.3s ease-out;
   }
@@ -63,13 +60,16 @@
   .anchor:hover {
     @apply visible no-underline;
   }
+  .prose p {
+    @apply mb-8;
+  }
 
   .prose a {
-    @apply transition-all;
+    @apply transition-all underline-offset-4 hover:underline;
   }
 
   .prose .anchor:after {
-    @apply text-gray-700;
+    @apply text-link;
     content: "#";
   }
 
@@ -118,7 +118,7 @@
   .token.constant,
   .token.symbol,
   .token.deleted {
-    @apply text-green;
+    @apply text-aqua;
   }
 
   .token.selector,

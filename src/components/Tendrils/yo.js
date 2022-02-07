@@ -126,7 +126,6 @@ function reset() {
     });
     tendrils.push(x);
   }
-  console.log(tendrils);
 }
 /** @type {HTMLCanvasElement} */
 const canvas = document.getElementById("canvas");

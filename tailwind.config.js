@@ -22,7 +22,9 @@ module.exports = {
         white: "#fff6ff",
         grey: "#a9adc1",
         "grey-light": "#282828",
-        blue: "#002b5c",
+        link: "hsl(230deg, 100%, 67%)",
+        aqua: "rgb(0, 190, 255)",
+
         gray: {
           0: "#fff",
           100: "#fafafa",
@@ -39,20 +41,19 @@ module.exports = {
       typography: (theme) => ({
         DEFAULT: {
           css: {
-            color: theme("colors.white"),
+            color: theme("colors.gray.200"),
             a: {
-              color: theme("colors.green"),
-              "&:hover": {
-                color: theme("colors.blue.600"),
-              },
+              color: theme("colors.link"),
+              "text-decoration": "none",
             },
-            code: { color: theme("colors.pink") },
             blockquote: {
               borderLeftColor: theme("colors.gray.700"),
               color: theme("colors.gray.300"),
             },
             "h1,h2,h3,h4,h5,h6": {
-              color: theme("colors.green"),
+              color: theme("colors.gray.200"),
+              "margin-left": 0,
+              "margin-right": 0,
               "scroll-margin-top": defaultTheme.spacing[32],
             },
             hr: { borderColor: theme("colors.gray.700") },
@@ -67,14 +68,13 @@ module.exports = {
               },
             },
             strong: { color: theme("colors.gray.100") },
-            thead: {
-              color: theme("colors.gray.100"),
-              borderBottomColor: theme("colors.gray.600"),
-            },
-            tbody: {
-              tr: {
-                borderBottomColor: theme("colors.gray.700"),
-              },
+          },
+        },
+        lg: {
+          css: {
+            "h1,h2,h3,h4,h5,h6": {
+              "margin-top": defaultTheme.spacing[16],
+              "font-weight": defaultTheme.fontWeight["bold"],
             },
           },
         },

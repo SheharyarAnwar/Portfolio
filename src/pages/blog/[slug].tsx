@@ -5,7 +5,7 @@ import BlogLayout from "../../layouts/BlogLayout";
 interface Props {}
 const Index: React.FC<any> = ({ code, frontMatter }) => {
   const Component = useMemo(() => getMDXComponent(code), [code]);
-  console.log(frontMatter);
+
   return (
     <>
       <BlogLayout frontMatter={frontMatter}>
