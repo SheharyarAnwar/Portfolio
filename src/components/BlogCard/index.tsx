@@ -11,7 +11,7 @@ const Index: React.FC<Props> = ({ category, title, summary, slug }) => {
   const [onReadMore, setOnReadMore] = useState(false);
 
   return (
-    <Link href={`blog/${encodeURIComponent(slug)}`}>
+    <Link href={`/blog/${encodeURIComponent(slug)}`}>
       <a>
         <div className="group hover-border relative p-12 transition-all mb-12 rounded-2xl cursor-pointer bg-secondry">
           <StaticTag>{category}</StaticTag>

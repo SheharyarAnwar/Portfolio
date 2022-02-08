@@ -14,10 +14,11 @@ const Index: React.FC<Props> = ({
     <div
       className={cn(
         "relative",
-        !isDisabled
-          ? "hover-border cursor-pointer"
-          : "after:content-[''] after:w-full after:h-full after:bg-gray-400 after:absolute after:rounded-full after:top-0 after:left-0 after:opacity-30",
-        `inline-block text-lg m-2 font-semibold
+        "hover-border cursor-pointer",
+        isDisabled
+          ? "pointer-events-none after:content-[''] after:w-full after:h-full after:bg-gray-700 after:absolute after:rounded-full after:top-0 after:left-0 after:opacity-50"
+          : "",
+        `inline-block text-lg m-2 font-semibold select-none
        before:rounded-full rounded-full bg-secondry py-4 px-8`,
         isActive ? "bg-white text-primary" : null
       )}
