@@ -70,11 +70,20 @@ export async function getAllFilesFrontMatter(
     ];
   }, []);
 }
-export interface GreyMatter {
-  title: string;
-  publishDate: string;
-  summary: string;
-  category: string;
-  slug: string;
-  allCategories: String[];
-}
+export type GreyMatter =
+  | {
+      title: string;
+      publishDate: string;
+      category: string;
+      summary: string;
+      slug: string;
+      allCategories: String[];
+    }
+  | {
+      slug: string;
+      summary: string;
+      allCategories: String[];
+      title: never;
+      publishDate: never;
+      category: never;
+    };

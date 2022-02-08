@@ -1,13 +1,13 @@
 import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
 import { StaticTag } from "../index";
-interface Props {
+export interface IBlogCard {
   category: string;
   title: string;
   slug: string;
   summary: string;
 }
-const Index: React.FC<Props> = ({ category, title, summary, slug }) => {
+const Index: React.FC<IBlogCard> = ({ category, title, summary, slug }) => {
   const [onReadMore, setOnReadMore] = useState(false);
 
   return (
