@@ -76,4 +76,5 @@ export interface GreyMatter {
   summary: string;
   category: string;
   slug: string;
+  allCategories: String[];
 }

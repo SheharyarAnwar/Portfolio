@@ -225,7 +225,7 @@
 
 @layer utilities {
   .hover-border {
-    @apply before:content-[''] before:hover:opacity-100 before:hover:scale-100 before:pointer-events-none  before:scale-95 before:transition-all before:absolute before:top-1/2 before:left-1/2 before:-translate-x-1/2 before:-translate-y-1/2 before:w-[calc(100%+1rem)] before:h-[calc(100%+1rem)] before:opacity-0 before:rounded-xl before:outline before:outline-2 before:outline-green border-8 border-solid border-primary;
+    @apply relative before:content-[''] before:hover:opacity-100 before:hover:scale-100 before:pointer-events-none  before:scale-95 before:transition-all before:absolute before:top-1/2 before:left-1/2 before:-translate-x-1/2 before:-translate-y-1/2 before:w-[calc(100%+1rem)] before:h-[calc(100%+1rem)] before:opacity-0 before:rounded-xl before:outline before:outline-2 before:outline-green border-8 border-solid border-primary;
   }
   .flex-center {
     @apply flex justify-center items-center;

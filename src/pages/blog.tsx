@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from "react";
-import { BlogCard, Tag } from "../components";
+import { BlogCard, CTag } from "../components";
 import { Container } from "../layouts";
 import { getAllFilesFrontMatter, GreyMatter } from "../lib/mdx";
 interface Props {
@@ -8,18 +8,25 @@ interface Props {
 
 const Index: React.FC<Props> = ({ posts }) => {
   const [selectedCategory, setSelectedCategory] = useState("All");
+  // console.log(posts);
   const categories = Array.from(
-    new Set(["All", ...(posts as Array<any>).map((val) => val.category)])
+    new Set(
+      [
+        "all",
+        "typescript",
+        ...(posts as Array<any>).map((val) => [...val.allCategories]),
+      ].flat()
+    )
   );
 
   const cards = useMemo(
     () =>
       posts
         .filter((val) => {
-          if (selectedCategory === "All") {
+          if (selectedCategory === "all") {
             return true;
           } else {
-            return val.category === selectedCategory;
+            return val.allCategories.includes(selectedCategory);
           }
         })
         .map((val, i) => {
@@ -27,37 +34,20 @@ const Index: React.FC<Props> = ({ posts }) => {
         }),
     [selectedCategory]
   );
-
-  // const categories = ["All", "Productivity", "React", "Performance", "Testing"];
   return (
     <>
       <Container>
         <div className="flex flex-col">
-          <h2 className="mt-20 mb-10 text-pink">Blog</h2>
-          <div className="flex flex-col lg:flex-row  justify-between">
-            <h4 className="text-green">Categories</h4>
-            <div className="my-8 lg:my-0 ">
-              {categories.map((val, i) => {
-                const activeClass = "bg-green text-secondry";
-                return (
-                  <span
-                    className="inline-block"
-                    onClick={() => setSelectedCategory(val)}
-                  >
-                    <Tag
-                      key={i}
-                      className={"cursor-pointer font-bold ".concat(
-                        selectedCategory === val
-                          ? activeClass
-                          : "hover:bg-green hover:text-secondry"
-                      )}
-                    >
-                      {val}
-                    </Tag>
-                  </span>
-                );
-              })}
-            </div>
+          <div className="my-8 ">
+            {categories.map((val, i) => (
+              <CTag
+                key={i}
+                isActive={selectedCategory === val}
+                onClick={() => setSelectedCategory(val)}
+              >
+                {val}
+              </CTag>
+            ))}
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-4 gap-10 py-16">
             {cards}

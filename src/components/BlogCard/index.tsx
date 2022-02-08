@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
-import Tag from "../Tag";
+import { StaticTag } from "../index";
 interface Props {
   category: string;
   title: string;
@@ -14,7 +14,7 @@ const Index: React.FC<Props> = ({ category, title, summary, slug }) => {
     <Link href={`blog/${encodeURIComponent(slug)}`}>
       <a>
         <div className="group hover-border relative p-12 transition-all mb-12 rounded-2xl cursor-pointer bg-secondry">
-          <Tag>{category}</Tag>
+          <StaticTag>{category}</StaticTag>
           <h4 className="mt-8 group-hover:text-green text-white">{title}</h4>
           <p className="my-8 line-clamp-3 text-grey font-medium">{summary}</p>
           <div className="flex justify-between items-center">

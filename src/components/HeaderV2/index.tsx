@@ -10,7 +10,7 @@ const Index: React.FC<Props> = () => {
   const router = useRouter();
   return (
     <header className="fixed w-full z-50 flex flex-col">
-      <div className="px-6 sm:px-12 flex md:px-24 h-32 bg-primary justify-between items-center">
+      <div className="px-6 sm:px-12 flex md:px-24 xl:px-40 h-32 bg-primary justify-between items-center">
         <Link href="/">
           <a>
             <Logo width={64} />
@@ -24,7 +24,7 @@ const Index: React.FC<Props> = () => {
             const anchorClass = isActive ? "text-white" : "text-grey";
             const spanClass = isActive ? "scale-x-100" : "scale-x-0";
             return (
-              <Link href={href}>
+              <Link key={i} href={href}>
                 <a
                   className={cn(
                     `mx-6 group relative font-bold text-lg hover:text-white`,

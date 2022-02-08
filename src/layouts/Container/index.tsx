@@ -18,7 +18,7 @@ const Index: React.FC<Props> = ({ children, className }) => {
         {/* <Header /> */}
         <HeaderV2 />
         <div
-          className={`px-6 text-center xs:text-left sm:px-12 md:px-24 mt-32 bg-primary ${className}`}
+          className={`px-6 text-center xs:text-left sm:px-12 md:px-24 xl:px-40 mt-32 bg-primary ${className}`}
         >
           {children}
         </div>
