@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState } from "react";
+import React, { useMemo, useState } from "react";
 import { BlogCard, CTag } from "../components";
 import { Container } from "../layouts";
 import { getAllFilesFrontMatter, GreyMatter } from "../lib/mdx";
@@ -11,7 +11,6 @@ const Index: React.FC<Props> = ({ posts }) => {
   const [selectedCategory, setSelectedCategory] = useState<string[]>([]);
   let [enabledCategories, setEnabledCategories] = useState<string[]>([]);
   const categories = getUniqueCategoriesArray(posts);
-  // setDisabledCategories(Array.from(new Set(enabledCategories.flat())));
 
   const renderCards = useMemo(() => {
     let enabledCategories: any[] = [];

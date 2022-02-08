@@ -5,7 +5,7 @@ import React, { useState } from "react";
 import { CloseIcon, Hamburger, Logo } from "../../../public/assets/icons";
 interface Props {}
 const Index: React.FC<Props> = () => {
-  let nav = ["Home", "Work", "Blog", "Snippets", "Contact"];
+  let nav = ["Home", "Portfolio", "Blog", "Snippets", "Contact"];
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const router = useRouter();
   return (
