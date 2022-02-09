@@ -70,6 +70,27 @@ export async function getAllFilesFrontMatter(
     ];
   }, []);
 }
+
+export async function getAllPortfolioFilesData(): Promise<Portfolio> {
+  const files = readdirSync(join(process.cwd(), "data", "portfolio"));
+  return files.reduce((allProjects: any, projectSlug) => {
+    const source = readFileSync(
+      join(process.cwd(), "data", "portfolio", projectSlug),
+      "utf8"
+    );
+    const data = JSON.parse(source);
+    let slug = projectSlug.replace(".json", "");
+
+    return [
+      {
+        ...data,
+        slug,
+        hero: `/assets/images/portfolio/${slug}/hero.png`,
+      },
+      ...allProjects,
+    ];
+  }, []);
+}
 export type GreyMatter =
   | {
       title: string;
@@ -87,3 +108,14 @@ export type GreyMatter =
       publishDate: never;
       category: never;
     };
+export type Portfolio = {
+  slug: string;
+  featured: boolean;
+  name: string;
+  techStack: string[];
+  category: string;
+  summary: string;
+  githubUrl: string;
+  previewUrl: string;
+  hero: string;
+};

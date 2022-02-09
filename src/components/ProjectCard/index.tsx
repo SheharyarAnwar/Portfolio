@@ -1,9 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
-interface Props {
+import { Portfolio } from "../../lib/mdx";
+import Link from "next/link";
+interface Props extends Portfolio {
   reversed?: Boolean;
 }
-const Index: React.FC<Props> = ({ reversed = false }) => {
+const Index: React.FC<Props> = ({
+  reversed = false,
+  category,
+  githubUrl,
+  hero,
+  name,
+  previewUrl,
+  slug,
+  summary,
+  techStack,
+}) => {
+  const fallbackSrc = "/assets/images/portfolio/default.png";
+  const [imgSrc, setImgSrc] = useState(hero);
+  // console.log(imgSrc, "src");
   let leftClass =
     "col-start-2 row-start-2 col-span-10 lg:col-start-1 lg:col-span-7 lg:row-start-1";
   let rightClass =
@@ -16,23 +31,34 @@ const Index: React.FC<Props> = ({ reversed = false }) => {
   }
   return (
     <div className="grid grid-cols-12 py-16 items-center">
-      <div className={leftClass + " relative"}>
-        {/* {TODO: Carousel} */}
-        <Image
-          src="/assets/images/Templific/background.png"
-          height={768}
-          width={1366}
-          layout="responsive"
-          alt="bg"
-          priority
-        />
-        {/* <div
-          className={`absolute w-full h-full top-0 left-0 bg-primary opacity-80 hover:opacity-0`}
-        ></div> */}
-      </div>
+      <Link href={`/portfolio/${slug}`}>
+        <div className={leftClass + " relative group"}>
+          {/* {TODO: Carousel} */}
+          <Image
+            src={imgSrc}
+            height={768}
+            width={1366}
+            layout="responsive"
+            alt={name}
+            priority
+            onLoadingComplete={(result) => {
+              if (result.naturalWidth === 0) {
+                // Broken image
+                setImgSrc(fallbackSrc);
+              }
+            }}
+          />
+          <div
+            className={`transition-opacity absolute w-full h-full top-0 left-0 bg-primary opacity-0 group-hover:opacity-80 flex-center cursor-pointer`}
+          >
+            <h5>View case study</h5>
+          </div>
+        </div>
+      </Link>
       <div
         className={
-          rightClass + " h-full grid grid-cols-12 grid-rows-3 relative"
+          rightClass +
+          " h-full grid grid-cols-12 grid-rows-3 relative pointer-events-none"
         }
       >
         <div
@@ -41,24 +67,20 @@ const Index: React.FC<Props> = ({ reversed = false }) => {
           }`}
         >
           <p className="text-center lg:text-left text-green text-base mb-2">
-            Web application
+            {category}
           </p>
-          <h3 className="text-center lg:text-left">Templific</h3>
+          <h3 className="text-center lg:text-left">{name}</h3>
         </div>
-        <p className="p-8 lg:bg-secondry col-span-12 self-center">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae
-          illo magni reiciendis dicta dolore at officia aliquam blanditiis
-          molestias,
-        </p>
+        <p className="p-8 lg:bg-secondry col-span-12 self-center">{summary}</p>
 
         <div
           className={`col-span-full justify-self-center lg:justify-self-${
             reversed ? "start" : "end"
           } self-center flex mb-2 gap-8 font-mono text-green`}
         >
-          <p>React</p>
-          <p>Mongodb</p>
-          <p>Nodejs</p>
+          {techStack.map((val, i) => (
+            <p key={i}>{val}</p>
+          ))}
         </div>
       </div>
     </div>

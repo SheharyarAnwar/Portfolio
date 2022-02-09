@@ -1,0 +1,9 @@
+{
+  "featured": true,
+  "name": "Scotus Speaks",
+  "techStack": ["firebase", "react", "nodejs", "javascript"],
+  "category": "Web Application",
+  "summary": "No summary at the moment",
+  "githubUrl": "",
+  "previewUrl": "https://youtu.be/IHnilCxHvag"
+}

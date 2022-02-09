@@ -54,7 +54,7 @@ const Index: React.FC<Props> = () => {
               <Hamburger width={"40%"} />
             )}
           </div>
-          <div className="ml-4 lg:ml-0 w-12 cursor-pointer hover:border-white sm:w-16 border-solid border-2 rounded-full border-grey aspect-square"></div>
+          {/* <div className="ml-4 lg:ml-0 w-12 cursor-pointer hover:border-white sm:w-16 border-solid border-2 rounded-full border-grey aspect-square"></div> */}
         </div>
       </div>
       {isDrawerOpen && (

@@ -1,0 +1,9 @@
+{
+  "featured": true,
+  "name": "Marvel Who?",
+  "techStack": ["firebase", "nextjs", "tailwindcss", "typescript"],
+  "category": "Web Application",
+  "summary": "No summary at the moment",
+  "githubUrl": "",
+  "previewUrl": "https://youtu.be/IHnilCxHvag"
+}
