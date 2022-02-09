@@ -13,7 +13,7 @@
   }
 
   h1 {
-    @apply text-4xl xs:text-5xl sm:text-5xl md:text-6xl lg:text-[5rem] 2xl:text-[6rem] leading-[1.1] font-bold;
+    @apply text-4xl xs:text-5xl sm:text-5xl md:text-6xl lg:text-[5.5rem] 2xl:text-[6.5rem] leading-[1.1] font-bold;
 
     transition: all 0.3s ease-out;
   }

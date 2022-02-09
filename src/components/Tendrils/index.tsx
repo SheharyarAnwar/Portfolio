@@ -180,7 +180,8 @@ const Index: React.FC<Props> = ({
       ctx!.fillStyle = "transparent";
       ctx!.fillRect(0, 0, ctx!.canvas.width, ctx!.canvas.height);
       ctx!.globalCompositeOperation = "lighter";
-      ctx!.strokeStyle = "hsla(346,98%,56%,0.25)";
+      ctx!.strokeStyle = "hsla(166, 100%, 70%,0.25)";
+      // ctx!.strokeStyle = "hsla(346,98%,56%,0.25)";
       ctx!.lineWidth = 1;
 
       tendrilRef.current.forEach((val) => {

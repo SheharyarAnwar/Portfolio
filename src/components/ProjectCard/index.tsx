@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import { Portfolio } from "../../lib/mdx";
 import Link from "next/link";
+import { GithubIcon, LinkIcon } from "../../../public/assets/icons";
 interface Props extends Portfolio {
   reversed?: Boolean;
 }
@@ -32,7 +33,7 @@ const Index: React.FC<Props> = ({
   return (
     <div className="grid grid-cols-12 py-16 items-center">
       <Link href={`/portfolio/${slug}`}>
-        <div className={leftClass + " relative group"}>
+        <div className={leftClass + " relative cursor-pointer hover-border"}>
           {/* {TODO: Carousel} */}
           <Image
             src={imgSrc}
@@ -48,11 +49,6 @@ const Index: React.FC<Props> = ({
               }
             }}
           />
-          <div
-            className={`transition-opacity absolute w-full h-full top-0 left-0 bg-primary opacity-0 group-hover:opacity-80 flex-center cursor-pointer`}
-          >
-            <h5>View case study</h5>
-          </div>
         </div>
       </Link>
       <div
@@ -76,11 +72,41 @@ const Index: React.FC<Props> = ({
         <div
           className={`col-span-full justify-self-center lg:justify-self-${
             reversed ? "start" : "end"
-          } self-center flex mb-2 gap-8 font-mono text-green`}
+          } self-center  font-mono text-green`}
         >
-          {techStack.map((val, i) => (
-            <p key={i}>{val}</p>
-          ))}
+          <div className="flex mb-4 gap-8">
+            {techStack.map((val, i) => (
+              <p key={i}>{val}</p>
+            ))}
+          </div>
+
+          <div
+            className={`flex pointer-events-auto ${
+              reversed ? "lg:justify-start" : "lg:justify-end"
+            } justify-center gap-8 `}
+          >
+            {githubUrl.length > 0 && (
+              <a
+                href={githubUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="cursor-pointer text-white hover:text-green"
+              >
+                <GithubIcon width={20} />
+              </a>
+            )}
+
+            {previewUrl.length > 0 && (
+              <a
+                href={previewUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="cursor-pointer text-white hover:text-green"
+              >
+                <LinkIcon width={20} />
+              </a>
+            )}
+          </div>
         </div>
       </div>
     </div>

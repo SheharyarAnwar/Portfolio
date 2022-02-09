@@ -61,7 +61,7 @@ const Index: React.FC<Props> = () => {
         <div className="relative h-[calc(100vh-8rem)] overflow-auto flex flex-col w-full bg-primary">
           {nav.map((val, i) => {
             return (
-              <Link href={`/${val.toLowerCase()}`}>
+              <Link href={`/${val.toLowerCase()}`} key={i}>
                 <a className=" px-6 sm:px-12 md:px-24 py-12 border-t border-b border-gray-500 border-solid  bg-primary hover:bg-secondry ">
                   {val}
                 </a>
