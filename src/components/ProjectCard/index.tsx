@@ -21,19 +21,19 @@ const Index: React.FC<Props> = ({
   const [imgSrc, setImgSrc] = useState(hero);
   // console.log(imgSrc, "src");
   let leftClass =
-    "col-start-2 row-start-2 col-span-10 lg:col-start-1 lg:col-span-7 lg:row-start-1";
+    "col-start-1 row-start-2 col-span-12 lg:col-start-1 lg:col-span-7 lg:row-start-1";
   let rightClass =
     "col-start-1 row-start-1 col-span-12 lg:col-start-7 lg:col-span-6 lg:row-start-1 z-10";
   if (reversed) {
     rightClass =
       "col-start-1 row-start-1 col-span-12 lg:col-start-1 lg:col-span-6 lg:row-start-1 z-10";
     leftClass =
-      "col-start-2 row-start-2 col-span-10 lg:col-start-6 lg:col-span-7 lg:row-start-1";
+      "col-start-1 row-start-2 col-span-12 lg:col-start-6 lg:col-span-7 lg:row-start-1";
   }
   return (
     <div className="grid grid-cols-12 py-16 items-center">
-      <Link href={`/portfolio/${slug}`}>
-        <div className={leftClass + " relative cursor-pointer hover-border"}>
+      <div className={leftClass + " relative cursor-pointer static-border"}>
+        <a href={previewUrl} rel="noreferrer" target="_blank">
           {/* {TODO: Carousel} */}
           <Image
             src={imgSrc}
@@ -49,8 +49,9 @@ const Index: React.FC<Props> = ({
               }
             }}
           />
-        </div>
-      </Link>
+        </a>
+      </div>
+
       <div
         className={
           rightClass +
@@ -67,14 +68,16 @@ const Index: React.FC<Props> = ({
           </p>
           <h3 className="text-center lg:text-left">{name}</h3>
         </div>
-        <p className="p-8 lg:bg-secondry col-span-12 self-center">{summary}</p>
+        <p className="text-center lg:text-left lg:p-8 lg:bg-secondry col-span-12 self-center">
+          {summary}
+        </p>
 
         <div
           className={`col-span-full justify-self-center lg:justify-self-${
             reversed ? "start" : "end"
           } self-center  font-mono text-green`}
         >
-          <div className="flex mb-4 gap-8">
+          <div className="flex text-center sm:text-left mb-4 gap-8 flex-wrap">
             {techStack.map((val, i) => (
               <p key={i}>{val}</p>
             ))}
@@ -83,7 +86,7 @@ const Index: React.FC<Props> = ({
           <div
             className={`flex pointer-events-auto ${
               reversed ? "lg:justify-start" : "lg:justify-end"
-            } justify-center gap-8 `}
+            } justify-center gap-8 my-8 lg:mb-4`}
           >
             {githubUrl.length > 0 && (
               <a

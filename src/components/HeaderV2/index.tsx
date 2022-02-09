@@ -12,8 +12,8 @@ const Index: React.FC<Props> = () => {
     <header className="fixed w-full z-50 flex flex-col">
       <div className="px-6 sm:px-12 flex md:px-24 xl:px-40 h-32 bg-primary justify-between items-center">
         <Link href="/">
-          <a>
-            <Logo width={64} />
+          <a className="w-12 sm:w-16">
+            <Logo width={"100%"} />
           </a>
         </Link>
         <nav className="hidden lg:flex">
