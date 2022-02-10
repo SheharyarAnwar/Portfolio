@@ -1,13 +1,13 @@
 import React from "react";
 import { BlogCard } from "../components";
-import { CategoryLayout } from "../layouts";
+import { Category } from "../layouts";
 import { getAllFilesFrontMatter, GreyMatter } from "../lib/mdx";
 interface Props {
   posts: Array<GreyMatter>;
 }
 
 const Index: React.FC<Props> = ({ posts }) => {
-  return <CategoryLayout data={posts} cardComponent={BlogCard} />;
+  return <Category data={posts} cardComponent={BlogCard} />;
 };
 export default Index;
 

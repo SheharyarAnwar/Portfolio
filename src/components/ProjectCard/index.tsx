@@ -41,7 +41,7 @@ const Index: React.FC<Props> = ({
             width={1366}
             layout="responsive"
             alt={name}
-            // priority
+            priority
             onLoadingComplete={(result) => {
               if (result.naturalWidth === 0) {
                 // Broken image

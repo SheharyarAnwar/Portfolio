@@ -19,8 +19,16 @@ const Index: React.FC<Props> = () => {
         <nav className="hidden lg:flex">
           {nav.map((val, i) => {
             const href = `${val !== "Home" ? "/" + val.toLowerCase() : "/"}`;
-
-            const isActive = router.asPath === href;
+            let routerPath = router.asPath;
+            if (new RegExp(/\/.+\//g).test(routerPath)) {
+              console.log("tested", routerPath);
+              routerPath = routerPath
+                .split("")
+                .slice(0, routerPath.length - 1)
+                .join("");
+            }
+            const isActive = routerPath === href;
+            console.log(isActive, "is actibve", href, routerPath);
             const anchorClass = isActive ? "text-white" : "text-grey";
             const spanClass = isActive ? "scale-x-100" : "scale-x-0";
             return (
@@ -46,7 +54,7 @@ const Index: React.FC<Props> = () => {
         <div className="flex">
           <div
             onClick={() => setIsDrawerOpen((prev) => !prev)}
-            className="block lg:hidden w-12 cursor-pointer hover:border-white sm:w-16 flex-center border-solid border-2 rounded-full border-grey aspect-square"
+            className="block lg:hidden w-12 h-12 cursor-pointer hover:border-white sm:w-16 sm:h-16 flex-center border-solid border-2 rounded-full border-grey"
           >
             {isDrawerOpen ? (
               <CloseIcon width={"40%"} />
@@ -60,8 +68,9 @@ const Index: React.FC<Props> = () => {
       {isDrawerOpen && (
         <div className="relative h-[calc(100vh-8rem)] overflow-auto flex flex-col w-full bg-primary">
           {nav.map((val, i) => {
+            const href = `${val !== "Home" ? "/" + val.toLowerCase() : "/"}`;
             return (
-              <Link href={`/${val.toLowerCase()}`} key={i}>
+              <Link href={href} key={i}>
                 <a className=" px-6 sm:px-12 md:px-24 py-12 border-t border-b border-gray-500 border-solid  bg-primary hover:bg-secondry ">
                   {val}
                 </a>

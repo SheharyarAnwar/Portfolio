@@ -1,5 +1,5 @@
 import React from "react";
-import { CategoryLayout } from "../layouts";
+import { Category } from "../layouts";
 import { ProjectCardCompact } from "../components";
 import { getAllPortfolioFilesData, Portfolio } from "../lib/mdx";
 import { NextPage } from "next/types";
@@ -7,10 +7,7 @@ import { NextPage } from "next/types";
 const Index: NextPage<{ projects: Portfolio[] }> = ({ projects }) => {
   return (
     <>
-      <CategoryLayout
-        data={projects}
-        cardComponent={ProjectCardCompact}
-      ></CategoryLayout>
+      <Category data={projects} cardComponent={ProjectCardCompact}></Category>
     </>
   );
 };

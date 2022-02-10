@@ -1,7 +1,7 @@
 {
   "featured": true,
   "name": "Scotus Speaks",
-  "allCategories": ["firebase", "reactjs", "nodejs", "javascript"],
+  "allCategories": ["Firebase", "Reactjs", "Nodejs", "JavaScript"],
   "category": "Web Application",
   "summary": "Scotus speaks is a social media platform for the people people who practice law.",
   "githubUrl": "",

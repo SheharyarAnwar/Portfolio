@@ -1,6 +1,10 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  reactStrictMode: true,
-}
+const withBundleAnalyzer = require("@next/bundle-analyzer")({
+  enabled: process.env.ANALYZE === "true",
+});
+module.exports = withBundleAnalyzer({
+  poweredByHeader: false,
+  trailingSlash: true,
+  basePath: "",
 
-module.exports = nextConfig
+  reactStrictMode: true,
+});

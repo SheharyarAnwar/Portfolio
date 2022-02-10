@@ -9,8 +9,11 @@ interface Props {
 const Index: React.FC<Props> = ({ children, frontMatter }) => {
   return (
     <>
-      <Container>
-        <article className="prose prose-base md:prose-lg bg-primary m-auto px-8 mb-32">
+      <Container
+        title="Blog - Sheharyar Anwar"
+        description="Thoughts about the things I learn, software I make and the processes I follow"
+      >
+        <article className="prose prose-base md:prose-lg bg-primary max-w-none w-full m-auto mb-32">
           <div className="pb-8">
             <p className="text-green text-center">{frontMatter.category}</p>
             <h1 className="text-center leading-[1.3]">{frontMatter.title}</h1>

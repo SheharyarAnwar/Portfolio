@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from "react";
 import { CTag } from "../../components";
-import { Container } from "../";
+import { Container } from "..";
 import { getUniqueCategoriesArray } from "../../lib/utils";
 import { GreyMatter, Portfolio } from "../../lib/mdx";
 import { IBlogCard } from "../../components/BlogCard";

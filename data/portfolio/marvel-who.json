@@ -1,7 +1,7 @@
 {
   "featured": true,
   "name": "Marvel Who?",
-  "allCategories": ["firebase", "nextjs", "tailwindcss", "typescript"],
+  "allCategories": ["Firebase", "Nextjs", "Tailwindcss", "TypeScript"],
   "category": "Web Application",
   "summary": "'Marvel who?' is a multiplayer game in which two players take turns guessing a random character that was assigned to them.",
   "githubUrl": "",
