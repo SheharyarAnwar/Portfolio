@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React from "react";
-import { Button, Header } from "../../components";
+import { Button } from "../../components";
 import { GreyMatter } from "../../lib/mdx";
 import Container from "../Container";
 interface Props {

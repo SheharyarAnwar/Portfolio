@@ -15,7 +15,7 @@ const Index: React.FC<Props> = ({
   previewUrl,
   slug,
   summary,
-  techStack,
+  allCategories,
 }) => {
   const fallbackSrc = "/assets/images/portfolio/default.png";
   const [imgSrc, setImgSrc] = useState(hero);
@@ -41,7 +41,7 @@ const Index: React.FC<Props> = ({
             width={1366}
             layout="responsive"
             alt={name}
-            priority
+            // priority
             onLoadingComplete={(result) => {
               if (result.naturalWidth === 0) {
                 // Broken image
@@ -77,8 +77,8 @@ const Index: React.FC<Props> = ({
             reversed ? "start" : "end"
           } self-center  font-mono text-green`}
         >
-          <div className="flex text-center sm:text-left mb-4 gap-8 flex-wrap">
-            {techStack.map((val, i) => (
+          <div className="flex  justify-center sm:justify-start mb-4 gap-8 flex-wrap">
+            {allCategories.map((val, i) => (
               <p key={i}>{val}</p>
             ))}
           </div>

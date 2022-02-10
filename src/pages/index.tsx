@@ -41,7 +41,6 @@ const Home: NextPage<{ posts: GreyMatter[]; projects: Portfolio[] }> = ({
       )
       .slice(0, 2);
   }, []);
-  console.log(queryBreakpoints("lg"), "yoloo");
 
   return (
     <>
@@ -99,7 +98,7 @@ const Home: NextPage<{ posts: GreyMatter[]; projects: Portfolio[] }> = ({
           <Button className="m-auto">See More</Button>
         </Section>
         <Section title="Featured Articles">
-          <div className="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-4 gap-10 py-16">
+          <div className="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-3 gap-10 py-16">
             {filterRecentPosts.map((val, i) => {
               return <BlogCard key={i} {...val} />;
             })}

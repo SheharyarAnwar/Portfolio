@@ -1,10 +1,22 @@
 import React from "react";
-interface Props {}
-const Index: React.FC<Props> = () => {
+import { CategoryLayout } from "../layouts";
+import { ProjectCardCompact } from "../components";
+import { getAllPortfolioFilesData, Portfolio } from "../lib/mdx";
+import { NextPage } from "next/types";
+
+const Index: NextPage<{ projects: Portfolio[] }> = ({ projects }) => {
   return (
     <>
-      <p>Hello</p>
+      <CategoryLayout
+        data={projects}
+        cardComponent={ProjectCardCompact}
+      ></CategoryLayout>
     </>
   );
 };
 export default Index;
+export async function getStaticProps() {
+  const projects = await getAllPortfolioFilesData();
+
+  return { props: { projects } };
+}

@@ -27,7 +27,7 @@ const Index: React.FC<Props> = () => {
               <Link key={i} href={href}>
                 <a
                   className={cn(
-                    `mx-6 group relative font-bold text-lg hover:text-white`,
+                    `mx-6 group relative font-semibold text-lg hover:text-white`,
                     anchorClass
                   )}
                 >

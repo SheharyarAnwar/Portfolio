@@ -103,7 +103,7 @@ export type GreyMatter =
   | {
       slug: string;
       summary: string;
-      allCategories: String[];
+      allCategories: string[];
       title: never;
       publishDate: never;
       category: never;
@@ -112,7 +112,7 @@ export type Portfolio = {
   slug: string;
   featured: boolean;
   name: string;
-  techStack: string[];
+  allCategories: string[];
   category: string;
   summary: string;
   githubUrl: string;

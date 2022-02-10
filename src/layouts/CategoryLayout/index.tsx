@@ -2,12 +2,18 @@ import React, { useMemo, useState } from "react";
 import { CTag } from "../../components";
 import { Container } from "../";
 import { getUniqueCategoriesArray } from "../../lib/utils";
-import { GreyMatter } from "../../lib/mdx";
+import { GreyMatter, Portfolio } from "../../lib/mdx";
 import { IBlogCard } from "../../components/BlogCard";
-interface Props {
-  data: Array<GreyMatter>;
-  cardComponent: React.FC<IBlogCard>;
-}
+import { IProjectCardCompact } from "../../components/ProjectCardCompact";
+type Props =
+  | {
+      data: Array<GreyMatter>;
+      cardComponent: React.FC<IBlogCard>;
+    }
+  | {
+      data: Array<Portfolio>;
+      cardComponent: React.FC<IProjectCardCompact>;
+    };
 
 const Index: React.FC<Props> = ({ data, cardComponent }) => {
   const Component = cardComponent;
@@ -17,7 +23,7 @@ const Index: React.FC<Props> = ({ data, cardComponent }) => {
 
   const renderCards = useMemo(() => {
     let enabledCategories: any[] = [];
-    let cards = data
+    let cards = (data as any[])
       .filter((val) => {
         if (selectedCategory.length === 0) {
           return true;
@@ -67,7 +73,7 @@ const Index: React.FC<Props> = ({ data, cardComponent }) => {
               </CTag>
             ))}
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-4 gap-10 py-16">
+          <div className="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-3 gap-10 py-16">
             {renderCards}
           </div>
         </div>
