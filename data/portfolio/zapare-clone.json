@@ -1,0 +1,9 @@
+{
+  "featured": false,
+  "name": "Zapare Clone",
+  "allCategories": ["JavaScript", "Reactjs", "MaterialUI", "Animation"],
+  "category": "Landing Page",
+  "summary": "A clone of zapare technolgies' landing page. ",
+  "githubUrl": "https://github.com/SheharyarAnwar/zapare_clone_mui",
+  "previewUrl": "http://zapare-sheharyar.surge.sh/"
+}

@@ -1,0 +1,9 @@
+{
+  "featured": false,
+  "name": "SpaceX",
+  "allCategories": ["TypeScript", "Reactjs", "Graphql", "PWA"],
+  "category": "Web Application",
+  "summary": "An application that tracks the recent missions and launches of SpaceX",
+  "githubUrl": "https://github.com/SheharyarAnwar/SpaceX-apollo-gql",
+  "previewUrl": "https://spacex-sheharyar.surge.sh/"
+}

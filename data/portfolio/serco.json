@@ -2,8 +2,8 @@
   "featured": true,
   "name": "Serco",
   "allCategories": ["Reactjs", "GSAP", "TypeScript", "Animation"],
-  "category": "Animations",
+  "category": "Landing Page",
   "summary": "It's a clone of an Awwwards winning website's landing page. Made with React and has beautiful animations and interactions.",
-  "githubUrl": "https://serco.surge.sh",
-  "previewUrl": "https://github.com/SheharyarAnwar/Serco"
+  "previewUrl": "https://serco.surge.sh",
+  "githubUrl": "https://github.com/SheharyarAnwar/Serco"
 }

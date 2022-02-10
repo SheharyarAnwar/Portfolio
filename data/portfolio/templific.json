@@ -1,0 +1,9 @@
+{
+  "featured": false,
+  "name": "Templific",
+  "allCategories": ["Mongodb", "Reactjs", "Nodejs", "AWS", "Konvajs"],
+  "category": "Web Application",
+  "summary": "Templific is an easy to use graphic template editor for etsy sellers. The users can create and edit graphic templates and sell them on the Etsy",
+  "githubUrl": "",
+  "previewUrl": "https://youtu.be/IHnilCxHvag"
+}

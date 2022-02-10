@@ -5,7 +5,7 @@ import React, { useState } from "react";
 import { CloseIcon, Hamburger, Logo } from "../../../public/assets/icons";
 interface Props {}
 const Index: React.FC<Props> = () => {
-  let nav = ["Home", "Portfolio", "Blog", "Snippets", "Contact"];
+  let nav = ["Home", "Portfolio", "Blog", "Snippets"];
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const router = useRouter();
   return (
@@ -21,14 +21,12 @@ const Index: React.FC<Props> = () => {
             const href = `${val !== "Home" ? "/" + val.toLowerCase() : "/"}`;
             let routerPath = router.asPath;
             if (new RegExp(/\/.+\//g).test(routerPath)) {
-              console.log("tested", routerPath);
               routerPath = routerPath
                 .split("")
                 .slice(0, routerPath.length - 1)
                 .join("");
             }
             const isActive = routerPath === href;
-            console.log(isActive, "is actibve", href, routerPath);
             const anchorClass = isActive ? "text-white" : "text-grey";
             const spanClass = isActive ? "scale-x-100" : "scale-x-0";
             return (
