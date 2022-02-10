@@ -229,6 +229,16 @@
   ::-webkit-scrollbar-thumb {
     @apply bg-grey rounded-full hover:bg-gray-200 active:bg-gray-100;
   }
+  @-moz-document url-prefix() {
+    html,
+    body,
+    div,
+    code,
+    article {
+      scrollbar-width: thin;
+      scrollbar-color: rgb(169, 173, 193) rgb(24, 38, 53);
+    }
+  }
 }
 
 @layer utilities {
