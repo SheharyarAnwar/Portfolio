@@ -70,11 +70,52 @@ export async function getAllFilesFrontMatter(
     ];
   }, []);
 }
-export interface GreyMatter {
-  title: string;
-  publishDate: string;
-  summary: string;
-  category: string;
-  slug: string;
-  allCategories: String[];
+
+export async function getAllPortfolioFilesData(): Promise<Portfolio> {
+  const files = readdirSync(join(process.cwd(), "data", "portfolio"));
+  return files.reduce((allProjects: any, projectSlug) => {
+    const source = readFileSync(
+      join(process.cwd(), "data", "portfolio", projectSlug),
+      "utf8"
+    );
+    const data = JSON.parse(source);
+    let slug = projectSlug.replace(".json", "");
+
+    return [
+      {
+        ...data,
+        slug,
+        hero: `/assets/images/portfolio/${slug}/hero.png`,
+      },
+      ...allProjects,
+    ];
+  }, []);
 }
+export type GreyMatter =
+  | {
+      title: string;
+      publishDate: string;
+      category: string;
+      summary: string;
+      slug: string;
+      allCategories: String[];
+    }
+  | {
+      slug: string;
+      summary: string;
+      allCategories: string[];
+      title: never;
+      publishDate: never;
+      category: never;
+    };
+export type Portfolio = {
+  slug: string;
+  featured: boolean;
+  name: string;
+  allCategories: string[];
+  category: string;
+  summary: string;
+  githubUrl: string;
+  previewUrl: string;
+  hero: string;
+};

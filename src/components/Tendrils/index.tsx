@@ -98,7 +98,6 @@ const Index: React.FC<Props> = ({
       ctx.closePath();
     }
   }
-
   useEffect(() => {
     if (tendrilRef.current) {
       reset();
@@ -136,34 +135,31 @@ const Index: React.FC<Props> = ({
     [inViewRef]
   );
 
-  const updateCanvasDimensions = useCallback(() => {
+  const updateCanvasDimensions = () => {
     if (ref.current) {
       const x = ref.current.parentElement;
       setHeight(window.innerHeight);
       setWidth(parseInt(window.getComputedStyle(x!).width));
       // setWidth(document.body.clientWidth);
     }
-  }, []);
-  const handleMouseMove = useCallback(
-    throttle(
-      (ev: any) => {
-        if (ref.current) {
-          let x, y;
+  };
+  const handleMouseMove = throttle(
+    (ev: any) => {
+      if (ref.current) {
+        let x, y;
 
-          if (ev.touches) {
-            x = ev.touches[0].pageX;
-            y = ev.touches[0].pageY;
-          } else {
-            x = ev.clientX;
-            y = ev.clientY;
-          }
-          mouseRef.current = { x, y };
+        if (ev.touches) {
+          x = ev.touches[0].pageX;
+          y = ev.touches[0].pageY;
+        } else {
+          x = ev.clientX;
+          y = ev.clientY;
         }
-      },
-      1000 / 60,
-      {}
-    ),
-    []
+        mouseRef.current = { x, y };
+      }
+    },
+    1000 / 60,
+    {}
   );
   const reset = useCallback(() => {
     for (var i = 0; i < trails; i++) {
@@ -180,7 +176,8 @@ const Index: React.FC<Props> = ({
       ctx!.fillStyle = "transparent";
       ctx!.fillRect(0, 0, ctx!.canvas.width, ctx!.canvas.height);
       ctx!.globalCompositeOperation = "lighter";
-      ctx!.strokeStyle = "hsla(346,98%,56%,0.25)";
+      ctx!.strokeStyle = "hsla(166, 100%, 70%,0.25)";
+      // ctx!.strokeStyle = "hsla(346,98%,56%,0.25)";
       ctx!.lineWidth = 1;
 
       tendrilRef.current.forEach((val) => {

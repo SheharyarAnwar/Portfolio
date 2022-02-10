@@ -8,3 +8,4 @@ export { default as CTag } from "./CTag";
 export { default as Globe } from "./Globe";
 export { default as Tendrils } from "./Tendrils";
 export { default as HeaderV2 } from "./HeaderV2";
+export { default as ProjectCardCompact } from "./ProjectCardCompact";

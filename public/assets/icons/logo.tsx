@@ -3,7 +3,7 @@ import React from "react";
 const Logo: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 110 110" {...props}>
     <defs>
-      <style>{".f8e7f84a-7518-45aa-a0ee-88bf4c9aff96{fill:#ff0081}"}</style>
+      <style>{".f8e7f84a-7518-45aa-a0ee-88bf4c9aff96{fill:#64ffda}"}</style>
     </defs>
     <title>{"Asset 1"}</title>
     <g id="e118f8a2-3ceb-451d-8c22-7280c473e922" data-name="Layer 2">

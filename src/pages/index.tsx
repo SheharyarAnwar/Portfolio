@@ -11,11 +11,20 @@ import {
 } from "../components";
 import { useBreakpoints } from "../hooks";
 import { Section, Container } from "../layouts";
-import { getAllFilesFrontMatter, GreyMatter } from "../lib/mdx";
+import {
+  getAllFilesFrontMatter,
+  getAllPortfolioFilesData,
+  GreyMatter,
+  Portfolio,
+} from "../lib/mdx";
 
-const Home: NextPage<{ posts: GreyMatter[] }> = ({ posts }) => {
+const Home: NextPage<{ posts: GreyMatter[]; projects: Portfolio[] }> = ({
+  posts,
+  projects,
+}) => {
   const introHeading = ["Hi", "I'm Sherry,", "web developer"];
   const { queryBreakpoints } = useBreakpoints();
+  // console.log(projects);
 
   let radius = 400 / 1.5;
   if (queryBreakpoints("lg")) {
@@ -42,7 +51,7 @@ const Home: NextPage<{ posts: GreyMatter[] }> = ({ posts }) => {
       </Head>
 
       <Container>
-        <Tendrils options={{}} />
+        {!queryBreakpoints("lg") && <Tendrils options={{}} />}
         <section className="relative h-[calc(100vh-8rem)]  flex items-center">
           <div className="inline-block text-left pb-8">
             {introHeading.map((val, i) => {
@@ -78,14 +87,18 @@ const Home: NextPage<{ posts: GreyMatter[] }> = ({ posts }) => {
             </div>
           </div>
         </Section>
-        <Section title="My Projects">
-          <ProjectCard />
-          <ProjectCard reversed />
-          <ProjectCard />
+        <Section title="Featured Projects">
+          {projects.map((val, i) => {
+            let reversed = i % 2 === 0;
+
+            return val.featured ? (
+              <ProjectCard key={i} {...val} reversed={!reversed} />
+            ) : null;
+          })}
           <Button className="m-auto">See More</Button>
         </Section>
-        <Section title="Blog Posts">
-          <div className="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-4 gap-10 py-16">
+        <Section title="Featured Articles">
+          <div className="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-3 gap-10 py-16">
             {filterRecentPosts.map((val, i) => {
               return <BlogCard key={i} {...val} />;
             })}
@@ -111,6 +124,7 @@ export default Home;
 
 export async function getStaticProps() {
   const post = await getAllFilesFrontMatter("blog");
+  const projects = await getAllPortfolioFilesData();
 
-  return { props: { posts: post } };
+  return { props: { posts: post, projects } };
 }

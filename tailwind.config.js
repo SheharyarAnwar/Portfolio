@@ -17,6 +17,9 @@ module.exports = {
       colors: {
         primary: "#0e141b",
         secondry: "#182635",
+        // primary: "#1f2028",
+        // secondry: "#2e3039",
+
         "syntax-bg": "hsl(210deg, 30%, 12%)",
         "syntax-highlight": "hsl(210deg, 30%, 18%)",
         "syntax-txt": "#FFF",
@@ -30,7 +33,7 @@ module.exports = {
         "syntax-regex": "#ffd700",
         "syntax-fn": "rgb(0, 190, 255)",
         pink: "#ff0081",
-        green: "#17fbff",
+        green: "#64ffda",
         white: "#fff6ff",
         grey: "#a9adc1",
         "grey-light": "#282828",
@@ -96,5 +99,6 @@ module.exports = {
   plugins: [
     require("@tailwindcss/typography"),
     require("@tailwindcss/line-clamp"),
+    require("autoprefixer"),
   ],
 };

@@ -1,13 +1,13 @@
 import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
 import { StaticTag } from "../index";
-interface Props {
+export interface IBlogCard {
   category: string;
   title: string;
   slug: string;
   summary: string;
 }
-const Index: React.FC<Props> = ({ category, title, summary, slug }) => {
+const Index: React.FC<IBlogCard> = ({ category, title, summary, slug }) => {
   const [onReadMore, setOnReadMore] = useState(false);
 
   return (
@@ -64,7 +64,7 @@ const Arrow = ({ activate }: { activate: boolean }) => {
     <div className="flex">
       <div className="relative">
         <div className="group-hover:bg-green absolute left-[-20px] top-[5px] w-8 h-[2px] bg-white"></div>
-        <div className="w-3 aspect-square border-t-2 border-r-2 border-solid border-white group-hover:border-green rotate-45"></div>
+        <div className="w-3 h-3 border-t-2 border-r-2 border-solid border-white group-hover:border-green rotate-45"></div>
       </div>
       <div ref={ref} className="flex">
         {Array(head)
@@ -73,7 +73,7 @@ const Arrow = ({ activate }: { activate: boolean }) => {
             return (
               <div
                 key={i}
-                className={`w-3 opacity-0 transition-all aspect-square border-t-2 border-r-2 border-solid border-white group-hover:border-green rotate-45 `}
+                className={`w-3 opacity-0 transition-all h-3 border-t-2 border-r-2 border-solid border-white group-hover:border-green rotate-45 `}
               ></div>
             );
           })}

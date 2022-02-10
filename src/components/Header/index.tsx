@@ -9,25 +9,29 @@ export interface Props {
 const Index: React.FC<Props> = ({ isBlog = false }) => {
   const { queryBreakpoints } = useBreakpoints();
   const router = useRouter();
-  const navigationItems = ["About", "Work", "Blog", "Snippets", "Contact"].map(
-    (val, i) => {
-      const href = `/${val.toLowerCase()}`;
-      const isActive = router.asPath === href;
-      return (
-        <Link key={i} href={href}>
-          <a className="py-3 w-full cursor-pointer border-b-2 border-solid border-primary ">
-            <p
-              className={`text-center hover:text-green font-medium  ${
-                !isActive ? "text-grey" : "text-green"
-              }`}
-            >
-              {val}
-            </p>
-          </a>
-        </Link>
-      );
-    }
-  );
+  const navigationItems = [
+    "Home",
+    "Portfolio",
+    "Blog",
+    "Snippets",
+    "Contact",
+  ].map((val, i) => {
+    const href = `/${val.toLowerCase()}`;
+    const isActive = router.asPath === href;
+    return (
+      <Link key={i} href={href}>
+        <a className="py-3 w-full cursor-pointer border-b-2 border-solid border-primary ">
+          <p
+            className={`text-center hover:text-green font-medium  ${
+              !isActive ? "text-grey" : "text-green"
+            }`}
+          >
+            {val}
+          </p>
+        </a>
+      </Link>
+    );
+  });
   let renderedHeader = <MobileHeader navigationItems={navigationItems} />;
   if (!isBlog) {
     renderedHeader = (
