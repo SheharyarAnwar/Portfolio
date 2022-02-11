@@ -239,6 +239,16 @@
       scrollbar-color: rgb(169, 173, 193) rgb(24, 38, 53);
     }
   }
+  @keyframes dash-in {
+    100% {
+      stroke-dashoffset: 0;
+    }
+  }
+  @keyframes dash-out {
+    100% {
+      stroke-dashoffset: 1;
+    }
+  }
 }
 
 @layer utilities {
@@ -250,5 +260,22 @@
   }
   .flex-center {
     @apply flex justify-center items-center;
+  }
+  .svg-ring {
+    cursor: pointer;
+    stroke-width: 4px;
+    transition: all 0.8s, opacity 0s 0.8s;
+    stroke-linecap: round;
+    stroke-dasharray: 0 999;
+    opacity: 0;
+  }
+  .svg-ring:not(:hover) {
+  }
+  .svg-ring:hover {
+    stroke-dasharray: 300 999;
+    opacity: 1;
+    transition: all 0.8s, opacity 0s;
+    transform: rotate(90deg);
+    visibility: visible;
   }
 }

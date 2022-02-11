@@ -3,6 +3,7 @@ import cn from "classnames";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { CloseIcon, Hamburger, Logo } from "../../../public/assets/icons";
+import { IconContainer } from "..";
 interface Props {}
 const Index: React.FC<Props> = () => {
   let nav = ["Home", "Portfolio", "Blog", "Snippets"];
@@ -12,7 +13,7 @@ const Index: React.FC<Props> = () => {
     <header className="fixed w-full z-50 flex flex-col">
       <div className="px-6 sm:px-12 flex md:px-24 xl:px-40 h-32 bg-primary justify-between items-center">
         <Link href="/">
-          <a className="w-12 sm:w-16">
+          <a className="w-12 text-green">
             <Logo width={"100%"} />
           </a>
         </Link>
@@ -52,19 +53,17 @@ const Index: React.FC<Props> = () => {
         <div className="flex">
           <div
             onClick={() => setIsDrawerOpen((prev) => !prev)}
-            className="block lg:hidden w-12 h-12 cursor-pointer hover:border-white sm:w-16 sm:h-16 flex-center border-solid border-2 rounded-full border-grey"
+            className="block lg:hidden w-12 h-12 cursor-pointer sm:w-16 sm:h-16 flex-center"
           >
-            {isDrawerOpen ? (
-              <CloseIcon width={"40%"} />
-            ) : (
-              <Hamburger width={"40%"} />
-            )}
+            <IconContainer>
+              {isDrawerOpen ? <CloseIcon /> : <Hamburger />}
+            </IconContainer>
           </div>
           {/* <div className="ml-4 lg:ml-0 w-12 cursor-pointer hover:border-white sm:w-16 border-solid border-2 rounded-full border-grey aspect-square"></div> */}
         </div>
       </div>
       {isDrawerOpen && (
-        <div className="relative h-[calc(100vh-8rem)] overflow-auto flex flex-col w-full bg-primary">
+        <div className="relative h-[calc(100vh-8rem)] overflow-auto flex flex-col w-full bg-primary lg:hidden">
           {nav.map((val, i) => {
             const href = `${val !== "Home" ? "/" + val.toLowerCase() : "/"}`;
             return (
