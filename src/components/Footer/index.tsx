@@ -11,17 +11,18 @@ import {
 interface Props {}
 const Index: React.FC<Props> = () => {
   return (
-    <div className="w-full p-32 bg-secondry flex-center ">
+    <div className="w-full px-4 py-12 xs:p-20 bg-secondry flex-center ">
       <div className="flex flex-col">
-        <span className="m-auto text-gray-200">
-          <Logo width={40} />
+        <span className="w-12 m-auto text-gray-200">
+          <Logo />
         </span>
-        <h4 className="text-center m-10 text-gray-300">
-          Living, learning, and leveling up one day at a time.
+        <h4 className="text-center mt-10 text-gray-300">
+          Living, learning, and leveling up
         </h4>
-        <div className="flex flex-center gap-4">
+        <h4 className="text-center mb-10 text-gray-300"> one day at a time.</h4>
+        <div className="flex flex-center gap-4 flex-wrap">
           <IconContainer>
-            <GithubIcon fill="currentColor" stroke="none" />
+            <GithubIcon />
           </IconContainer>
           <IconContainer>
             <FacebookIcon />
