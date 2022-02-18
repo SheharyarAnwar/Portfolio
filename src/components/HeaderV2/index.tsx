@@ -6,7 +6,7 @@ import { CloseIcon, Hamburger, Logo } from "../../../public/assets/icons";
 import { IconContainer } from "..";
 interface Props {}
 const Index: React.FC<Props> = () => {
-  let nav = ["Home", "Portfolio", "Blog", "Contact"];
+  let nav = ["Home", "Portfolio", "Blog", "Snippets"];
   // "Skills", "Goodies", "Snippets"
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const router = useRouter();
@@ -60,8 +60,8 @@ const Index: React.FC<Props> = () => {
               {isDrawerOpen ? <CloseIcon /> : <Hamburger />}
             </IconContainer>
           </div>
-          {/* <div className="ml-4 lg:ml-0 w-12 cursor-pointer hover:border-white sm:w-16 border-solid border-2 rounded-full border-grey aspect-square"></div> */}
         </div>
+        {/* <div className="ml-4 lg:ml-0 w-12 cursor-pointer hover:border-white sm:w-16 border-solid border-2 rounded-full border-grey aspect-square"></div> */}
       </div>
       {isDrawerOpen && (
         <div className="relative h-[calc(100vh-8rem)] overflow-auto flex flex-col w-full bg-primary lg:hidden">

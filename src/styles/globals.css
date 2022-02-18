@@ -224,7 +224,7 @@
 
   /* Scrollbar */
   ::-webkit-scrollbar {
-    @apply bg-secondry w-2;
+    @apply bg-secondry w-2 h-2;
   }
   ::-webkit-scrollbar-thumb {
     @apply bg-grey rounded-full hover:bg-gray-200 active:bg-gray-100;
