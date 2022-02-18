@@ -1,6 +1,6 @@
 import React from "react";
 
-const Hamburger: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
+const MailIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -8,15 +8,16 @@ const Hamburger: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
       fill="none"
       viewBox="0 0 24 24"
       stroke="currentColor"
+      {...props}
     >
       <path
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth={2}
-        d="M4 6h16M4 12h16M4 18h16"
+        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
       />
     </svg>
   );
 };
 
-export default Hamburger;
+export default MailIcon;

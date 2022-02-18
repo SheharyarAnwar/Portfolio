@@ -51,7 +51,7 @@ const Home: NextPage<{ posts: GreyMatter[]; projects: Portfolio[] }> = ({
       </Head>
 
       <Container>
-        {!queryBreakpoints("lg") && <Tendrils options={{}} />}
+        {/* {!queryBreakpoints("lg") && <Tendrils options={{}} />} */}
         <section className="relative h-[calc(100vh-8rem)]  flex items-center">
           <div className="inline-block text-left pb-8">
             {introHeading.map((val, i) => {
@@ -69,19 +69,21 @@ const Home: NextPage<{ posts: GreyMatter[]; projects: Portfolio[] }> = ({
 
             <div className="mt-8">
               <p className="tracking-widest text-grey">
-                Full Stack Developer / React Expert
+                Fullstack Web Developer / React Specialist
               </p>
               <Button className=" mt-10">Contact Me</Button>
             </div>
           </div>
         </section>
         <Section title="About Me">
-          <div className="grid grid-cols-12">
-            <p className=" pt-16 pb-8 col-span-12 xl:col-span-6">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime
-              ab vero corrupti quam soluta cupiditate deleniti. Sapiente quae
-              dolore fugiat.
-            </p>
+          <div className="grid grid-cols-12 ">
+            <div className=" pt-16 pb-8 col-span-12 xl:col-span-6">
+              <p>
+                Hi! I am Sheharyar Anwar and I am a web developer based in{" "}
+                <mark>Pakistan</mark>. My interest in web development started
+                back in 2020
+              </p>
+            </div>
             <div className="flex items-center justify-center xl:justify-end col-span-12 xl:col-span-6">
               <div>{<Globe radius={radius} />}</div>
             </div>

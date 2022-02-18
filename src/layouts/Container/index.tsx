@@ -1,7 +1,7 @@
 //@ts-nocheck
 import React from "react";
 import cn from "classnames";
-import { HeaderV2 } from "../../components";
+import { HeaderV2, Footer } from "../../components";
 import Head from "next/head";
 import { useRouter } from "next/router";
 
@@ -59,6 +59,7 @@ const Index: React.FC<any> = ({ children, className, ...customMeta }) => {
         >
           {children}
         </div>
+        <Footer />
       </div>
     </>
   );
