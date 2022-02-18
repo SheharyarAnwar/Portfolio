@@ -51,7 +51,7 @@ const Home: NextPage<{ posts: GreyMatter[]; projects: Portfolio[] }> = ({
       </Head>
 
       <Container>
-        {/* {!queryBreakpoints("lg") && <Tendrils options={{}} />} */}
+        {!queryBreakpoints("lg") && <Tendrils options={{}} />}
         <section className="relative h-[calc(100vh-8rem)]  flex items-center">
           <div className="inline-block text-left pb-8">
             {introHeading.map((val, i) => {

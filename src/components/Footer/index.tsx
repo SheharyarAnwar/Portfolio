@@ -5,13 +5,14 @@ import {
   FacebookIcon,
   GithubIcon,
   Logo,
-  TwitterIcon,
+  MailIcon,
+  // TwitterIcon,
   WhatsappIcon,
 } from "../../../public/assets/icons";
 interface Props {}
 const Index: React.FC<Props> = () => {
   return (
-    <div className="w-full px-4 py-12 xs:p-20 bg-secondry flex-center ">
+    <div className="w-full px-4 py-12 xs:p-20 md:mt-20 bg-secondry flex-center ">
       <div className="flex flex-col">
         <span className="w-12 m-auto text-gray-200">
           <Logo />
@@ -31,7 +32,7 @@ const Index: React.FC<Props> = () => {
             <WhatsappIcon />
           </IconContainer>{" "}
           <IconContainer>
-            <TwitterIcon />
+            <MailIcon />
           </IconContainer>{" "}
           <IconContainer>
             <CodepenIcon />

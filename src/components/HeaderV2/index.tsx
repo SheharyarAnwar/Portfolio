@@ -6,7 +6,8 @@ import { CloseIcon, Hamburger, Logo } from "../../../public/assets/icons";
 import { IconContainer } from "..";
 interface Props {}
 const Index: React.FC<Props> = () => {
-  let nav = ["Home", "Portfolio", "Blog", "Snippets"];
+  let nav = ["Home", "Portfolio", "Blog", "Contact"];
+  // "Skills", "Goodies", "Snippets"
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const router = useRouter();
   return (
