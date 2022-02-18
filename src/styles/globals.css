@@ -7,7 +7,9 @@
 @layer base {
   @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800&display=swap");
   /* @import url("https://fonts.googleapis.com/css2?family=Cabin&display=swap"); */
-
+  /* html {
+    font-size: 18px;
+  } */
   body {
     @apply text-white bg-primary;
   }
@@ -44,6 +46,10 @@
     @apply text-base font-medium;
 
     transition: all 0.3s ease-out;
+  }
+
+  mark {
+    @apply text-green bg-transparent;
   }
   /* Blog styles */
 

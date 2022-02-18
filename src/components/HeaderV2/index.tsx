@@ -1,14 +1,29 @@
 import Link from "next/link";
 import cn from "classnames";
 import { useRouter } from "next/router";
-import React, { useState } from "react";
-import { CloseIcon, Hamburger, Logo } from "../../../public/assets/icons";
+import React, { useEffect, useState } from "react";
+import {
+  CloseIcon,
+  Hamburger,
+  Logo,
+  MailIcon,
+} from "../../../public/assets/icons";
 import { IconContainer } from "..";
+import { useBreakpoints } from "../../hooks";
+import { socialLinks } from "../../constants";
 interface Props {}
 const Index: React.FC<Props> = () => {
   let nav = ["Home", "Portfolio", "Blog"];
+  const { queryBreakpoints } = useBreakpoints();
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const router = useRouter();
+  // const handleScroll = (e: Event) => {
+  //   const el = e.currentTarget;
+  //   console.log(el);
+  // };
+  // useEffect(() => {
+  //   document.addEventListener("scroll", handleScroll);
+  // }, []);
   return (
     <header className="fixed w-full z-50 flex flex-col">
       <div className="px-6 sm:px-12 flex md:px-24 xl:px-40 h-32 bg-primary justify-between items-center">
@@ -50,16 +65,30 @@ const Index: React.FC<Props> = () => {
             );
           })}
         </nav>
-        <div className="flex">
-          <div
-            onClick={() => setIsDrawerOpen((prev) => !prev)}
-            className="block lg:hidden w-12 h-12 cursor-pointer sm:w-16 sm:h-16 flex-center"
-          >
-            <IconContainer>
-              {isDrawerOpen ? <CloseIcon /> : <Hamburger />}
-            </IconContainer>
+        <div className="flex gap-8" title="Get in touch">
+          <div className="w-12 h-12 cursor-pointer sm:w-16 sm:h-16 flex-center">
+            <a
+              href={"mailto:" + socialLinks.email}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <IconContainer>
+                <MailIcon />
+              </IconContainer>
+            </a>
           </div>
-          {/* <div className="ml-4 lg:ml-0 w-12 cursor-pointer hover:border-white sm:w-16 border-solid border-2 rounded-full border-grey aspect-square"></div> */}
+          {queryBreakpoints("lg") ? (
+            <div className="flex">
+              <div
+                onClick={() => setIsDrawerOpen((prev) => !prev)}
+                className="block lg:hidden w-12 h-12 cursor-pointer sm:w-16 sm:h-16 flex-center"
+              >
+                <IconContainer>
+                  {isDrawerOpen ? <CloseIcon /> : <Hamburger />}
+                </IconContainer>
+              </div>
+            </div>
+          ) : null}
         </div>
       </div>
       {isDrawerOpen && (

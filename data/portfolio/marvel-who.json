@@ -3,7 +3,7 @@
   "name": "Marvel Who?",
   "allCategories": ["Firebase", "Nextjs", "Tailwindcss", "TypeScript"],
   "category": "Web Application",
-  "summary": "'Marvel who?' is a multiplayer game in which two players take turns guessing a random character that was assigned to them.",
+  "summary": "'Marvel who?' is a desktop-only multiplayer game in which two players take turns guessing a random character that was assigned to them.",
   "githubUrl": "",
   "previewUrl": "https://marvel-guess.vercel.app/"
 }
