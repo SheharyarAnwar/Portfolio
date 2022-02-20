@@ -92,9 +92,9 @@ const Home: NextPage<{ posts: GreyMatter[]; projects: Portfolio[] }> = ({
                 consider myself blessed to be able to work on it for a living.
               </p>
               <p className="my-6">
-                I have a Bachelor's degree in Computer Sciences, which I got in
-                2021 and have been involved in web development since 2020 when I
-                started my career as a freelance developer.
+                I have a Bachelor&apos;s degree in Computer Sciences, which I
+                got in 2021 and have been involved in web development since 2020
+                when I started my career as a freelance developer.
               </p>
               <p className="mb-6">
                 I like to create digital experiences and products with focus on{" "}
