@@ -1,5 +1,6 @@
 import type { NextPage } from "next";
 import Head from "next/head";
+import Link from "next/link";
 import { useMemo } from "react";
 import {
   ElasticAnimatableText,
@@ -9,6 +10,7 @@ import {
   Globe,
   Tendrils,
 } from "../components";
+import { socialLinks } from "../constants";
 import { useBreakpoints } from "../hooks";
 import { Section, Container } from "../layouts";
 import {
@@ -69,9 +71,15 @@ const Home: NextPage<{ posts: GreyMatter[]; projects: Portfolio[] }> = ({
 
             <div className="mt-8">
               <p className="tracking-widest text-grey">
-                Fullstack Web Developer / React Specialist
+                Full Stack Web Developer / React Specialist
               </p>
-              <Button className=" mt-10">Contact Me</Button>
+              <a
+                className="m-auto"
+                href={`mailto:${socialLinks.email}`}
+                rel="noopener noreferrer"
+              >
+                <Button className=" mt-10">Hire Me</Button>
+              </a>
             </div>
           </div>
         </section>
@@ -80,8 +88,22 @@ const Home: NextPage<{ posts: GreyMatter[]; projects: Portfolio[] }> = ({
             <div className=" pt-16 pb-8 col-span-12 xl:col-span-6">
               <p>
                 Hi! I am Sheharyar Anwar and I am a web developer based in{" "}
-                <mark>Pakistan</mark>. My interest in web development started
-                back in 2020
+                <mark>Pakistan</mark>. I am in love with web platform and I
+                consider myself blessed to be able to work on it for a living.
+              </p>
+              <p className="my-6">
+                I have a Bachelor's degree in Computer Sciences, which I got in
+                2021 and have been involved in web development since 2020 when I
+                started my career as a freelance developer.
+              </p>
+              <p className="mb-6">
+                I like to create digital experiences and products with focus on{" "}
+                <mark>accessibility</mark>, <mark>performance</mark> and{" "}
+                <mark>responsive design</mark> using cutting edge technologies.
+              </p>
+              <p>
+                When I am not working, I like to indulge myself with cats,
+                anime, web novels and scientific documentaries.{" "}
               </p>
             </div>
             <div className="flex items-center justify-center xl:justify-end col-span-12 xl:col-span-6">
@@ -97,7 +119,11 @@ const Home: NextPage<{ posts: GreyMatter[]; projects: Portfolio[] }> = ({
               <ProjectCard key={i} {...val} reversed={!reversed} />
             ) : null;
           })}
-          <Button className="m-auto">See More</Button>
+          <Link href={`/portfolio`}>
+            <a className="m-auto">
+              <Button>See More</Button>
+            </a>
+          </Link>
         </Section>
         <Section title="Featured Articles">
           <div className="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-3 gap-10 py-16">
@@ -107,16 +133,25 @@ const Home: NextPage<{ posts: GreyMatter[]; projects: Portfolio[] }> = ({
             {/* <BlogCard></BlogCard>
             <BlogCard></BlogCard> */}
           </div>
-          <Button className="m-auto">See More</Button>
+          <Link href={`/blog`}>
+            <a className="m-auto">
+              <Button>See More</Button>
+            </a>
+          </Link>
         </Section>
-        <Section title="Contact Me">
-          <p className="py-16">
-            I’m interested in freelance opportunities – especially ambitious or
-            large projects. However, if you have other request or question,
-            don’t hesitate to use the form.
+        {/* <Section title="Contact Me">
+          <p className="py-16 text-center">
+            I’m currently looking for remote jobs or freelance opportunities. If
+            you have any questions feel free to reach out to me.
           </p>
-          <Button className="m-auto">Say Hello!</Button>
-        </Section>
+          <a
+            className="m-auto"
+            href={`mailto:${socialLinks.email}`}
+            rel="noopener noreferrer"
+          >
+            <Button>Say Hello!</Button>
+          </a>
+        </Section> */}
       </Container>
     </>
   );
