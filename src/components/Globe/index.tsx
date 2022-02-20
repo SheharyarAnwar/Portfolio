@@ -149,12 +149,12 @@ const Index: React.FC<Props> = ({
         const rx2 = rx1 * sc[3] + rz1 * sc[2];
         const ry2 = ry1;
         const rz2 = rz1 * sc[3] - rx1 * sc[2];
-        const per = depth / (depth + rz2);
+        const per = (2 * depth) / (2 * depth + rz2);
         item.x = rx2;
         item.y = ry2;
         item.z = rz2;
         item.scale = per.toFixed(3);
-        let alpha = per * per - 0.25;
+        let alpha = per * per - 0.5;
         //@ts-ignore
         alpha = (alpha > 1 ? 1 : alpha).toFixed(3);
 

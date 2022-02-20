@@ -12,6 +12,6 @@ exports.socialLinks = {
   github: "https://github.com/SheharyarAnwar",
   facebook: "https://facebook.com/sheharyar.anwar",
   codepen: "https://codepen.io/sherryLooper",
-  whatsapp: "https://wa.me/923074586346",
+  whatsapp: "https://wa.me/923160445905",
   linkedin: "https://www.linkedin.com/in/sheharyar-anwar",
 };

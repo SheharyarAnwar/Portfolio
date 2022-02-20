@@ -6,7 +6,6 @@ const Index: React.FC<Props> = ({ children, ...props }) => {
       {...props}
       className={`overflow-hidden hover:text-secondry relative mt-8 mx-auto tracking-widest
        px-16 py-4 outline-[1.5px] text-green outline outline-green 
-
        before:content[''] before:h-full before:w-full 
        before:scale-x-0 before:absolute before:top-0 before:left-0 before:bg-green
        before:-skew-x-12 before:-z-1 before:duration-500 
