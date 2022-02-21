@@ -1,9 +1,4 @@
 /* stylelint-disable*/
-.sphere {
-  @apply mt-20 w-80 aspect-square m-auto border-2 border-solid rounded-[50%] relative;
-
-  perspective: 20rem;
-}
 
 .tag {
   @apply text-xs font-medium xs:font-bold xs:text-base absolute top-1/2 left-1/2 opacity-0 origin-center text-green;

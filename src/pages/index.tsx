@@ -2,14 +2,16 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
 import { useMemo } from "react";
+import dynamic from "next/dynamic";
 import {
   ElasticAnimatableText,
   Button,
   ProjectCard,
   BlogCard,
-  Globe,
-  Tendrils,
+  // Globe,
+  // Tendrils,
 } from "../components";
+const Globe = dynamic(() => import("../components/Globe"));
 import { socialLinks } from "../constants";
 import { useBreakpoints } from "../hooks";
 import { Section, Container } from "../layouts";
