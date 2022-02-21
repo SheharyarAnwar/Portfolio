@@ -17,6 +17,7 @@ class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
+          <link rel="icon" type="image/png" href="/favicon.png" />
           <script
             async
             src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
