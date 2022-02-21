@@ -5,7 +5,7 @@ export { default as ProjectCard } from "./ProjectCard";
 export { default as BlogCard } from "./BlogCard";
 export { default as StaticTag } from "./StaticTag";
 export { default as CTag } from "./CTag";
-// export { default as Globe } from "./Globe";
+export { default as Globe } from "./Globe";
 // export { default as Tendrils } from "./Tendrils";
 export { default as HeaderV2 } from "./HeaderV2";
 export { default as Footer } from "./Footer";

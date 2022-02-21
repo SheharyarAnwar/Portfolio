@@ -8,10 +8,10 @@ import {
   Button,
   ProjectCard,
   BlogCard,
-  // Globe,
+  Globe,
   // Tendrils,
 } from "../components";
-const Globe = dynamic(() => import("../components/Globe"));
+// const Globe = dynamic(() => import("../components/Globe"));
 import { socialLinks } from "../constants";
 import { useBreakpoints } from "../hooks";
 import { Section, Container } from "../layouts";
