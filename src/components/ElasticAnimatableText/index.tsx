@@ -43,15 +43,11 @@ const Index: React.FC<Props> = ({
   useEffect(() => {
     if (inView && stagger) {
       refArray.current.forEach((val, i) => {
-        let anim = val.animate(
-          [{ transform: "scale3d(0,0,0)" }, ...keyFrameArr],
-          {
-            duration: 1000,
-            delay: inlineStaggerDelay * i + blockStaggerDelay,
-          }
-        );
-        anim.play();
-        anim.onfinish = () => (val.style.transform = "scale3d(1,1,1)");
+        val.animate([{ transform: "scale3d(0,0,0)" }, ...keyFrameArr], {
+          duration: 1000,
+          delay: inlineStaggerDelay * i + blockStaggerDelay,
+          fill: "forwards",
+        });
       });
     }
   }, [inView]);
