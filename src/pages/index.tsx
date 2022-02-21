@@ -21,6 +21,7 @@ import {
   GreyMatter,
   Portfolio,
 } from "../lib/mdx";
+import { useInView } from "react-intersection-observer";
 
 const Home: NextPage<{ posts: GreyMatter[]; projects: Portfolio[] }> = ({
   posts,
@@ -28,7 +29,7 @@ const Home: NextPage<{ posts: GreyMatter[]; projects: Portfolio[] }> = ({
 }) => {
   const introHeading = ["Hi", "I'm Sherry,", "web developer"];
   const { queryBreakpoints } = useBreakpoints();
-  // console.log(projects);
+  const { ref, inView } = useInView();
 
   let radius = 400 / 1.5;
   if (queryBreakpoints("lg")) {
@@ -108,8 +109,11 @@ const Home: NextPage<{ posts: GreyMatter[]; projects: Portfolio[] }> = ({
                 anime, web novels and scientific documentaries.{" "}
               </p>
             </div>
-            <div className="flex items-center justify-center xl:justify-end col-span-12 xl:col-span-6">
-              <div>{<Globe radius={radius} />}</div>
+            <div
+              ref={ref}
+              className="flex items-center justify-center xl:justify-end col-span-12 xl:col-span-6"
+            >
+              {inView && <Globe radius={radius} />}
             </div>
           </div>
         </Section>
