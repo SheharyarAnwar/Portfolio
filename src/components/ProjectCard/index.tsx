@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { Portfolio } from "../../lib/mdx";
-import Link from "next/link";
 import { GithubIcon, LinkIcon } from "../../../public/assets/icons";
 interface Props extends Portfolio {
   reversed?: Boolean;

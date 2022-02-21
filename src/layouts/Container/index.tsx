@@ -29,7 +29,7 @@ const Index: React.FC<any> = ({ children, className, ...customMeta }) => {
         <title>{meta.title}</title>
         <meta name="robots" content="follow, index" />
         <meta content={meta.description} name="description" />
-        <link rel="icon" type="image/png" href="/favicon.png" />
+
         <meta
           property="og:url"
           content={`https://sheharyaranwar.com${router.asPath}`}
