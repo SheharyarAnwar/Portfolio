@@ -11,7 +11,7 @@ const Index: React.FC<Props> = ({ children, frontMatter }) => {
     <>
       <Container
         title="Blog - Sheharyar Anwar"
-        description="Thoughts about the things I learn, software I make and the processes I follow"
+        description={frontMatter.summary}
       >
         <article className="prose prose-base md:prose-lg bg-primary max-w-none w-full m-auto mb-32">
           <div className="pb-8">

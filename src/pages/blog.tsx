@@ -7,7 +7,15 @@ interface Props {
 }
 
 const Index: React.FC<Props> = ({ posts }) => {
-  return <Category data={posts} cardComponent={BlogCard} />;
+  return (
+    <Category
+      //@ts-ignore
+      title="Blog - Sheharyar Anwar"
+      description="Thoughts about the things I learn, software I make and the processes I follow"
+      data={posts}
+      cardComponent={BlogCard}
+    />
+  );
 };
 export default Index;
 
