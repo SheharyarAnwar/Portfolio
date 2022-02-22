@@ -15,7 +15,7 @@ type Props =
       cardComponent: React.FC<IProjectCardCompact>;
     };
 
-const Index: React.FC<Props> = ({ data, cardComponent }) => {
+const Index: React.FC<Props> = ({ data, cardComponent, ...meta }) => {
   const Component = cardComponent;
   const [selectedCategory, setSelectedCategory] = useState<string[]>([]);
   let [enabledCategories, setEnabledCategories] = useState<string[]>([]);
@@ -59,7 +59,7 @@ const Index: React.FC<Props> = ({ data, cardComponent }) => {
   };
   return (
     <>
-      <Container>
+      <Container {...meta}>
         <div className="flex flex-col">
           <div className="my-8 ">
             {categories.map((val, i) => (
