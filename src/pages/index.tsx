@@ -101,22 +101,21 @@ const Home: NextPage<{ posts: GreyMatter[]; projects: Portfolio[] }> = ({
               <p className="my-4">
                 I now have a Bachelor&apos;s degree in Computer Sciences, and
                 have been active as a web developer ever since I started my
-                career as a freelance developer back in 2020. I have had the
-                opportunity to work at fast growing, high impact startups like{" "}
+                career as a freelance developer back in 2020.
+              </p>
+              <p className="mb-4">
+                I have had the opportunity to work at fast growing, high impact
+                startups like{" "}
                 <InlineLink href={SocialLinks.Qureos}>Qureos</InlineLink> and{" "}
                 <InlineLink href={SocialLinks.Remotebase}>
                   Remotebase
                 </InlineLink>{" "}
-                as a frontend lead.
-              </p>
-              <p className="mb-4">
-                I like to create digital experiences and products with focus on{" "}
-                accessibility, performance and maintainability using cutting
-                edge technologies.
+                as a frontend lead to create digital experiences and products
+                with focus on accessibility, performance and maintainability.
               </p>
               <p>
-                When I am not working, I like to indulge myself with cats,
-                anime, web novels and scientific documentaries.{" "}
+                When I am not working, I like to indulge myself in anime, web
+                novels and scientific documentaries.{" "}
               </p>
             </div>
             <div
