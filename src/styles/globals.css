@@ -284,4 +284,18 @@
     transform: rotate(90deg);
     visibility: visible;
   }
+
+  .underlined-link {
+    @apply text-green relative pb-1 cursor-pointer;
+  }
+  .underlined-link::after {
+    content: "";
+    height: 1px;
+    @apply w-0 absolute left-0 bottom-0 bg-green;
+    transition: all 0.3s ease-out;
+  }
+
+  .underlined-link:hover:after {
+    @apply w-full;
+  }
 }

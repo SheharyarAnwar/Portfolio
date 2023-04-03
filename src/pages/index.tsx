@@ -1,6 +1,5 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import Link from "next/link";
 import { useMemo, useState } from "react";
 import {
   ElasticAnimatableText,
@@ -8,7 +7,7 @@ import {
   ProjectCard,
   BlogCard,
   Globe,
-  // Tendrils,
+  Tendrils,
 } from "../components";
 // const Globe = dynamic(() => import("../components/Globe"));
 import { socialLinks } from "../constants";
@@ -21,24 +20,18 @@ import {
   Portfolio,
 } from "../lib/mdx";
 import { useInView } from "react-intersection-observer";
-import {
-  ElasticAnimatableTextProps,
-  HeadingLevels,
-} from "../components/ElasticAnimatableText";
+import { ElasticAnimatableTextProps } from "../components/ElasticAnimatableText";
+import { SocialLinks } from "../types";
+import InlineLink from "../components/Link";
+import Link from "next/link";
 
 const Home: NextPage<{ posts: GreyMatter[]; projects: Portfolio[] }> = ({
   posts,
   projects,
 }) => {
   const introHeading: Partial<ElasticAnimatableTextProps>[] = [
-    { text: "Hi", level: 1 },
-    { text: "I'm Sherry,", level: 1 },
-    {
-      inlineStaggerDelay: 25,
-      text: "I build exceptional digital experience for web",
-      containerClassName: "mt-4 text-gray-300",
-      level: 3,
-    },
+    { text: "Hi,", level: 1 },
+    { text: "I'm Sherry.", level: 1 },
   ];
   const { queryBreakpoints } = useBreakpoints();
   const { ref, inView } = useInView();
@@ -61,8 +54,8 @@ const Home: NextPage<{ posts: GreyMatter[]; projects: Portfolio[] }> = ({
 
   return (
     <>
+      {!queryBreakpoints("lg") && <Tendrils options={{}} />}
       <Container>
-        {/* {!queryBreakpoints("lg") && <Tendrils options={{}} />} */}
         <section className="relative h-[calc(100vh-8rem)]  flex items-center">
           <div className="inline-block text-left pb-8">
             {introHeading.map((val, i) => {
@@ -78,8 +71,12 @@ const Home: NextPage<{ posts: GreyMatter[]; projects: Portfolio[] }> = ({
             })}
 
             <div className="mt-8">
-              <p className="tracking-widest text-grey">
-                Full Stack Web Developer / React Specialist
+              <p className="mt-4 text-lg font-medium text-gray-300 max-w-2xl">
+                I'm a Software Engineer currently focused on building building
+                exceptional digital experience for the web at{" "}
+                <InlineLink href={SocialLinks.Remotebase}>
+                  Remotebase
+                </InlineLink>
               </p>
               <a
                 className="m-auto"
@@ -96,18 +93,26 @@ const Home: NextPage<{ posts: GreyMatter[]; projects: Portfolio[] }> = ({
             <div className=" pt-16 pb-8 col-span-12 xl:col-span-6">
               <p>
                 Hi! I am Sheharyar Anwar and I am a web developer based in{" "}
-                <mark>Pakistan</mark>. I am in love with web platform and I
-                consider myself blessed to be able to work on it for a living.
+                Pakistan. I realized my true calling was in the world of
+                programming when I took an introductory programming course while
+                pursuing engineering. It was love at first sight and I haven't
+                looked back ever since.
               </p>
-              <p className="my-6">
-                I have a Bachelor&apos;s degree in Computer Sciences, which I
-                got in 2021 and have been involved in web development since 2020
-                when I started my career as a freelance developer.
+              <p className="my-4">
+                I now have a Bachelor&apos;s degree in Computer Sciences, and
+                have been active as a web developer ever since I started my
+                career as a freelance developer back in 2020. I have had the
+                opportunity to work at fast growing, high impact startups like{" "}
+                <InlineLink href={SocialLinks.Qureos}>Qureos</InlineLink> and{" "}
+                <InlineLink href={SocialLinks.Remotebase}>
+                  Remotebase
+                </InlineLink>{" "}
+                as a frontend lead.
               </p>
-              <p className="mb-6">
+              <p className="mb-4">
                 I like to create digital experiences and products with focus on{" "}
-                <mark>accessibility</mark>, <mark>performance</mark> and{" "}
-                <mark>responsive design</mark> using cutting edge technologies.
+                accessibility, performance and maintainability using cutting
+                edge technologies.
               </p>
               <p>
                 When I am not working, I like to indulge myself with cats,
@@ -150,19 +155,6 @@ const Home: NextPage<{ posts: GreyMatter[]; projects: Portfolio[] }> = ({
             </a>
           </Link>
         </Section>
-        {/* <Section title="Contact Me">
-          <p className="py-16 text-center">
-            I’m currently looking for remote jobs or freelance opportunities. If
-            you have any questions feel free to reach out to me.
-          </p>
-          <a
-            className="m-auto"
-            href={`mailto:${socialLinks.email}`}
-            rel="noopener noreferrer"
-          >
-            <Button>Say Hello!</Button>
-          </a>
-        </Section> */}
       </Container>
     </>
   );
