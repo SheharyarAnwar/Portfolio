@@ -194,7 +194,7 @@ const Tendrils: React.FC<Props> = ({
   return (
     <canvas
       ref={setRefs}
-      className="absolute top-0 left-0 "
+      className="absolute top-0 left-0 pointer-events-none z-[1000]"
       height={height}
       width={width}
     ></canvas>
