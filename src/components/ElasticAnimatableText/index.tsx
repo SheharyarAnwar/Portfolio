@@ -1,29 +1,41 @@
+import classNames from "classnames";
 import React, { useEffect, useRef } from "react";
 import { useInView } from "react-intersection-observer";
-type Props =
+export type ElasticAnimatableTextProps =
   | {
       text: string;
-      level: 1 | 2 | 3 | 4 | 5 | 6;
+      level: HeadingLevels;
       stagger?: boolean;
+      onAnimationDone?: () => void;
       inlineStaggerDelay?: number;
       blockStagger?: never;
       previousBlockSize?: never;
+      className?: string;
+      containerClassName?: string;
     }
   | {
       text: string;
-      level: 1 | 2 | 3 | 4 | 5 | 6;
+      level: HeadingLevels;
+      onAnimationDone?: () => void;
       stagger?: boolean;
       inlineStaggerDelay?: number;
       blockStagger: boolean;
       previousBlockSize: number;
+      className?: string;
+      containerClassName?: string;
     };
-const Index: React.FC<Props> = ({
+
+export type HeadingLevels = 1 | 2 | 3 | 4 | 5 | 6;
+const Index: React.FC<ElasticAnimatableTextProps> = ({
   text,
   level,
   stagger = false,
   inlineStaggerDelay = 100,
   blockStagger = false,
   previousBlockSize = 0,
+  className,
+  containerClassName,
+  onAnimationDone,
 }) => {
   let commonClasses = "inline-block hover:text-green scale-0";
   const { ref, inView } = useInView({ triggerOnce: true });
@@ -47,7 +59,7 @@ const Index: React.FC<Props> = ({
           duration: 1000,
           delay: inlineStaggerDelay * i + blockStaggerDelay,
           fill: "forwards",
-        });
+        }).onfinish = () => onAnimationDone?.();
       });
     }
   }, [inView]);
@@ -63,7 +75,7 @@ const Index: React.FC<Props> = ({
     return React.createElement(
       `h${level}`,
       {
-        className: commonClasses,
+        className: classNames(commonClasses, className),
         onMouseEnter: handleMouseEnter,
         key,
         ref: (el: HTMLElement) => (refArray.current[key] = el),
@@ -80,6 +92,10 @@ const Index: React.FC<Props> = ({
     });
   };
 
-  return <div ref={ref}>{destructureString(text)}</div>;
+  return (
+    <div className={containerClassName} ref={ref}>
+      {destructureString(text)}
+    </div>
+  );
 };
 export default Index;

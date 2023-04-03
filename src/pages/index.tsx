@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import {
   ElasticAnimatableText,
   Button,
@@ -21,12 +21,25 @@ import {
   Portfolio,
 } from "../lib/mdx";
 import { useInView } from "react-intersection-observer";
+import {
+  ElasticAnimatableTextProps,
+  HeadingLevels,
+} from "../components/ElasticAnimatableText";
 
 const Home: NextPage<{ posts: GreyMatter[]; projects: Portfolio[] }> = ({
   posts,
   projects,
 }) => {
-  const introHeading = ["Hi", "I'm Sherry,", "web developer"];
+  const introHeading: Partial<ElasticAnimatableTextProps>[] = [
+    { text: "Hi", level: 1 },
+    { text: "I'm Sherry,", level: 1 },
+    {
+      inlineStaggerDelay: 25,
+      text: "I build exceptional digital experience for web",
+      containerClassName: "mt-4 text-gray-300",
+      level: 3,
+    },
+  ];
   const { queryBreakpoints } = useBreakpoints();
   const { ref, inView } = useInView();
 
@@ -56,11 +69,10 @@ const Home: NextPage<{ posts: GreyMatter[]; projects: Portfolio[] }> = ({
               return (
                 <ElasticAnimatableText
                   key={i}
-                  level={1}
-                  text={val}
                   stagger
                   blockStagger
-                  previousBlockSize={introHeading[i - 1]?.length || 0}
+                  previousBlockSize={introHeading[i - 1]?.text?.length || 0}
+                  {...(val as ElasticAnimatableTextProps)}
                 />
               );
             })}
@@ -74,7 +86,7 @@ const Home: NextPage<{ posts: GreyMatter[]; projects: Portfolio[] }> = ({
                 href={`mailto:${socialLinks.email}`}
                 rel="noopener noreferrer"
               >
-                <Button className=" mt-10">Hire Me</Button>
+                <Button className=" mt-10">Get In touch</Button>
               </a>
             </div>
           </div>
