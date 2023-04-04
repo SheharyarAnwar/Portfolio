@@ -8,3 +8,4 @@ export { default as WhatsappIcon } from "./whatsapp";
 export { default as TwitterIcon } from "./twitter";
 export { default as CodepenIcon } from "./codepen";
 export { default as MailIcon } from "./mail";
+export { default as ListPointerIcon } from "./listPointer";
