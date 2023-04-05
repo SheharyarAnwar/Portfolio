@@ -30,7 +30,7 @@ const Index: React.FC<Props> = ({
       "col-start-1 row-start-2 col-span-12 lg:col-start-6 lg:col-span-7 lg:row-start-1";
   }
   return (
-    <div className="grid grid-cols-12 py-16 items-center">
+    <div className="grid grid-cols-12 py-4 sm:py-16 items-center">
       <div className={leftClass + " relative cursor-pointer static-border"}>
         <a href={previewUrl} rel="noreferrer" target="_blank">
           {/* {TODO: Carousel} */}

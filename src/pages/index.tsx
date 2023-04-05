@@ -25,6 +25,7 @@ import { SocialLinks } from "../types";
 import InlineLink from "../components/Link";
 import Link from "next/link";
 import VerticalTab from "../components/VerticalTab";
+import { experiences } from "../../data/experience";
 
 const Home: NextPage<{ posts: GreyMatter[]; projects: Portfolio[] }> = ({
   posts,
@@ -35,7 +36,7 @@ const Home: NextPage<{ posts: GreyMatter[]; projects: Portfolio[] }> = ({
     { text: "I'm Sherry.", level: 1 },
   ];
   const { queryBreakpoints } = useBreakpoints();
-  const { ref, inView } = useInView();
+  const { ref, inView } = useInView({ triggerOnce: true });
 
   let radius = 400 / 1.5;
   if (queryBreakpoints("lg")) {
@@ -91,7 +92,7 @@ const Home: NextPage<{ posts: GreyMatter[]; projects: Portfolio[] }> = ({
         </section>
         <Section title="About Me">
           <div className="grid grid-cols-12 ">
-            <div className=" pt-16 pb-8 col-span-12 xl:col-span-6">
+            <div className="pt-4 pb-4 sm:pt-16 sm:pb-8 col-span-12 xl:col-span-6">
               <p>
                 Hi! I am Sheharyar Anwar and I am a web developer based in{" "}
                 Pakistan. I realized my true calling was in the world of
@@ -128,55 +129,7 @@ const Home: NextPage<{ posts: GreyMatter[]; projects: Portfolio[] }> = ({
           </div>
         </Section>
         <Section title="Experience">
-          <VerticalTab
-            experiences={[
-              {
-                name: "Remotebase",
-                achievements: [
-                  "Reduced JavaScript bundle size, resulting in up to 60% improvement in page load times for the end users. ",
-                  "Led the upgrade of Next.js version 10 to 12 to leverage the SWC compiler resulting in improved compilation time and developer experience.",
-                  "Managed a team of four front-end developers, ensuring timely delivery of features and maintaining code quality through code reviews.",
-                  "Introduced unit testing to the codebase and collaborated with QA engineers to devise and execute test cases ",
-                ],
-                companyUrl: SocialLinks.Remotebase,
-                departureDate: "",
-                joiningDate: "March 2022",
-                role: "Engineer",
-              },
-              {
-                name: "Integrate",
-                achievements: [],
-                companyUrl: "",
-                departureDate: "",
-                joiningDate: "",
-                role: "Developer",
-              },
-              {
-                name: "Qureos",
-                achievements: [],
-                companyUrl: SocialLinks.Qureos,
-                departureDate: "",
-                joiningDate: "",
-                role: "Lead",
-              },
-              {
-                name: "Vexuls",
-                achievements: [],
-                companyUrl: "",
-                departureDate: "",
-                joiningDate: "",
-                role: "Architect",
-              },
-              {
-                name: "Freelance",
-                achievements: [],
-                companyUrl: "",
-                departureDate: "",
-                joiningDate: "",
-                role: "Web Developer",
-              },
-            ]}
-          />
+          <VerticalTab experiences={experiences} />
         </Section>
         <Section title="Featured Projects">
           {projects.map((val, i) => {
@@ -191,9 +144,10 @@ const Home: NextPage<{ posts: GreyMatter[]; projects: Portfolio[] }> = ({
               <Button>See More</Button>
             </a>
           </Link>
+          <div className="pb-4 sm:pb-16"></div>
         </Section>
         <Section title="Featured Articles">
-          <div className="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-3 gap-10 py-16">
+          <div className="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-3 gap-10 py-4 sm:py-16">
             {filterRecentPosts.map((val, i) => {
               return <BlogCard key={i} {...val} />;
             })}
