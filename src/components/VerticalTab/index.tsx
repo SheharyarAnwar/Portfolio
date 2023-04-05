@@ -29,21 +29,19 @@ const VerticalTab: React.FC<Props> = ({ experiences }) => {
         <div className="hidden sm:flex sm:flex-col">
           {experiences.map((exp, i) => {
             return (
-              <>
-                <div
-                  key={i}
-                  onClick={() => setActive(exp.name)}
-                  className={classNames(
-                    active === exp.name
-                      ? "text-green bg-primary-light after:h-full"
-                      : "text-gray-300 after:h-0",
-                    "border-0 sm:border-l-2 w-40 relative font-medium text-lg border-l-gray-500 px-5 py-4 hover:text-green hover:bg-primary-light transition-all cursor-pointer",
-                    "after:absolute after:tab-transition after:w-0.5 after:bg-green after:content-[' '] after:bottom-0 after:-left-0.5 inline-block"
-                  )}
-                >
-                  {exp.name}
-                </div>
-              </>
+              <div
+                key={i}
+                onClick={() => setActive(exp.name)}
+                className={classNames(
+                  active === exp.name
+                    ? "text-green bg-primary-light after:h-full"
+                    : "text-gray-300 after:h-0",
+                  "border-0 sm:border-l-2 w-40 relative font-medium text-lg border-l-gray-500 px-5 py-4 hover:text-green hover:bg-primary-light transition-all cursor-pointer",
+                  "after:absolute after:tab-transition after:w-0.5 after:bg-green after:content-[' '] after:bottom-0 after:-left-0.5 inline-block"
+                )}
+              >
+                {exp.name}
+              </div>
             );
           })}
         </div>

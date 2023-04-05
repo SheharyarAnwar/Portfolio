@@ -73,7 +73,7 @@ const Index: React.FC<Props> = ({ data, cardComponent, ...meta }) => {
               </CTag>
             ))}
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-3 gap-10 py-4 sm:py-16">
+          <div className="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-3 gap-10 py-16">
             {renderCards}
           </div>
         </div>
