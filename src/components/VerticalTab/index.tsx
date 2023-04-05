@@ -91,7 +91,7 @@ const VerticalTab: React.FC<Props> = ({ experiences }) => {
           <ul className="pt-12 flex flex-col gap-4">
             {achievements.map((ach, i) => {
               return (
-                <li className="flex gap-5 sm:gap-12">
+                <li key={i} className="flex gap-5 sm:gap-12">
                   <span className="mt-2 text-green">
                     <ListPointerIcon width={10} />
                   </span>
