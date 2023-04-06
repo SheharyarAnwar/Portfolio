@@ -2,14 +2,6 @@ import { SocialLinks } from "../../src/types";
 
 export const experiences = [
   {
-    name: "Remotebase",
-    achievements: [],
-    companyUrl: SocialLinks.Remotebase,
-    departureDate: "",
-    joiningDate: "March 22",
-    role: "Software Engineer",
-  },
-  {
     name: "Qureos",
     achievements: [
       "Reduced JavaScript bundle size, resulting in up to 60% improvement in page load times for the end users. ",
@@ -18,7 +10,18 @@ export const experiences = [
       "Introduced unit testing to the codebase and collaborated with QA engineers to devise and execute test cases.",
     ],
     companyUrl: SocialLinks.Qureos,
-    departureDate: "January 23",
+    departureDate: "",
+    joiningDate: "March 22",
+    role: "Software Engineer",
+  },
+  {
+    name: "Remotebase",
+    achievements: [
+      "Developed a hybrid mobile application to act as a wrapper around the website to support native notifications.",
+      "Revamped UI for the .NET MVC website using jQuery, HTML and CSS.",
+    ],
+    companyUrl: SocialLinks.Remotebase,
+    departureDate: "",
     joiningDate: "March 22",
     role: "Software Engineer",
   },
