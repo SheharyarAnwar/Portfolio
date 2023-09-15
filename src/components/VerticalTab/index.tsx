@@ -10,8 +10,16 @@ interface Props {
 
 const VerticalTab: React.FC<Props> = ({ experiences }) => {
   const [active, setActive] = useState<string>(experiences[0].name);
-  const { achievements, companyUrl, departureDate, joiningDate, name, role } =
-    experiences.find((v) => v.name === active) as Experience;
+  const {
+    achievements,
+    companyUrl,
+    departureDate,
+    joiningDate,
+    name,
+    role,
+    outsourcingAgentName,
+    outsourcingAgentUrl,
+  } = experiences.find((v) => v.name === active) as Experience;
 
   const currentActiveIndex = experiences.findIndex((exp) => exp.name === name);
 
@@ -82,6 +90,12 @@ const VerticalTab: React.FC<Props> = ({ experiences }) => {
           <h5>
             {role} <mark className="font-mono">@</mark>{" "}
             <Link href={companyUrl}>{name}</Link>
+            {outsourcingAgentName && (
+              <>
+                {" "}
+                x <Link href={outsourcingAgentUrl}>{outsourcingAgentName}</Link>
+              </>
+            )}
           </h5>
           <p className="text-gray-300 font-mono text-sm font-medium mt-2">
             {joiningDate} - {departureDate ? departureDate : "Present"}
